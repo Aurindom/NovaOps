@@ -1,0 +1,1 @@
+{"domain": "oom", "severity": "P2", "service_name": "redis-cache", "namespace": "default", "initial_hypotheses": ["Memory pressure indicates unstable workers that should be recycled."], "key_evidence": ["Memory pressure indicates unstable workers that should be recycled."], "summary": "Memory pressure indicates unstable workers that should be recycled."}

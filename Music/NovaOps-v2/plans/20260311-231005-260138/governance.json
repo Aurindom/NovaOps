@@ -1,0 +1,15 @@
+{
+  "incident_id": "20260311-231005-260138",
+  "decision": "REQUIRE_APPROVAL",
+  "policy_name": "rollback_always_requires_approval",
+  "reason": "rollback_deployment is irreversible \u2014 always require human approval",
+  "risk_score": 67,
+  "severity": "P2",
+  "confidence": 0.55,
+  "confidence_source": "convergence_disagreement",
+  "action": "rollback_deployment",
+  "auto_executed": false,
+  "execution_result": {},
+  "status": "pending_approval",
+  "evaluated_at": "2026-03-12T03:10:05.924642+00:00"
+}

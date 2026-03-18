@@ -1,0 +1,1 @@
+{"verdict": "PASS", "confidence": 0.83, "feedback": "OOM evidence is clear and restarting pods is a safe first action.", "missing_evidence": [], "action_approved": true}

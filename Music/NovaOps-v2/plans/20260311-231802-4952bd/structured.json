@@ -1,0 +1,82 @@
+{
+  "triage": {
+    "domain": "traffic_surge",
+    "severity": "P2",
+    "service_name": "checkout-api",
+    "namespace": "default",
+    "initial_hypotheses": [
+      "Checkout is under elevated demand and should scale horizontally."
+    ],
+    "key_evidence": [
+      "Checkout is under elevated demand and should scale horizontally."
+    ],
+    "summary": "Checkout is under elevated demand and should scale horizontally."
+  },
+  "log_analyst": {
+    "agent_name": "log_analyst",
+    "findings": {
+      "traffic_spike": true,
+      "error_rate": "moderate"
+    },
+    "hypothesis_support": {}
+  },
+  "metrics_analyst": {
+    "agent_name": "metrics_analyst",
+    "findings": {
+      "latency": "high",
+      "cpu": "elevated",
+      "traffic": "spiking"
+    },
+    "hypothesis_support": {}
+  },
+  "k8s_inspector": {
+    "agent_name": "k8s_inspector",
+    "findings": {
+      "pods_ready": true,
+      "hpa": "at_limit"
+    },
+    "hypothesis_support": {}
+  },
+  "github_analyst": {
+    "agent_name": "github_analyst",
+    "findings": {
+      "recent_deployment": false
+    },
+    "hypothesis_support": {}
+  },
+  "root_cause": {
+    "hypotheses": [
+      {
+        "rank": 1,
+        "description": "Checkout is under elevated demand and should scale horizontally.",
+        "confidence": 0.88,
+        "evidence_for": [
+          "Checkout is under elevated demand and should scale horizontally."
+        ],
+        "evidence_against": [],
+        "recommended_action": "scale_deployment"
+      }
+    ],
+    "reasoning_chain": "Checkout is under elevated demand and should scale horizontally.",
+    "gaps": [],
+    "confidence_overall": 0.88
+  },
+  "critic": {
+    "verdict": "PASS",
+    "confidence": 0.88,
+    "feedback": "Traffic surge pattern is consistent across logs and metrics.",
+    "missing_evidence": [],
+    "action_approved": true
+  },
+  "remediation": {
+    "action_taken": "scale_deployment",
+    "parameters": {
+      "service_name": "checkout-api",
+      "namespace": "default",
+      "target_replicas": 4
+    },
+    "justification": "Checkout is under elevated demand and should scale horizontally.",
+    "verification_needed": "Verify latency, error rate, and pod health after remediation.",
+    "escalation_required": false
+  }
+}

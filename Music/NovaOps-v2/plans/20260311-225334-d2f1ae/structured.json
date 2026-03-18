@@ -1,0 +1,81 @@
+{
+  "triage": {
+    "domain": "unknown",
+    "severity": "P2",
+    "service_name": "notification-service",
+    "namespace": "default",
+    "initial_hypotheses": [
+      "Signal does not match a known domain with enough confidence."
+    ],
+    "key_evidence": [
+      "Signal does not match a known domain with enough confidence."
+    ],
+    "summary": "Signal does not match a known domain with enough confidence."
+  },
+  "log_analyst": {
+    "agent_name": "log_analyst",
+    "findings": {
+      "summary": "No deterministic pattern in local mock analysis."
+    },
+    "hypothesis_support": {}
+  },
+  "metrics_analyst": {
+    "agent_name": "metrics_analyst",
+    "findings": {
+      "summary": "No strong resource saturation signal detected."
+    },
+    "hypothesis_support": {}
+  },
+  "k8s_inspector": {
+    "agent_name": "k8s_inspector",
+    "findings": {
+      "summary": "Kubernetes state appears stable in mock data."
+    },
+    "hypothesis_support": {}
+  },
+  "github_analyst": {
+    "agent_name": "github_analyst",
+    "findings": {
+      "summary": "No recent deployment correlation detected in mock data."
+    },
+    "hypothesis_support": {}
+  },
+  "root_cause": {
+    "hypotheses": [
+      {
+        "rank": 1,
+        "description": "Signal does not match a known domain with enough confidence.",
+        "confidence": 0.45,
+        "evidence_for": [
+          "Signal does not match a known domain with enough confidence."
+        ],
+        "evidence_against": [],
+        "recommended_action": "noop_require_human"
+      }
+    ],
+    "reasoning_chain": "Signal does not match a known domain with enough confidence.",
+    "gaps": [
+      "Human review recommended"
+    ],
+    "confidence_overall": 0.45
+  },
+  "critic": {
+    "verdict": "FAIL",
+    "confidence": 0.45,
+    "feedback": "Evidence is incomplete. Escalate to a human operator.",
+    "missing_evidence": [
+      "Run live investigation"
+    ],
+    "action_approved": false
+  },
+  "remediation": {
+    "action_taken": "noop_require_human",
+    "parameters": {
+      "service_name": "notification-service",
+      "namespace": "default"
+    },
+    "justification": "Signal does not match a known domain with enough confidence.",
+    "verification_needed": "Verify latency, error rate, and pod health after remediation.",
+    "escalation_required": true
+  }
+}

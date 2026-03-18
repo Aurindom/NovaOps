@@ -1,0 +1,1 @@
+{"verdict": "FAIL", "confidence": 0.45, "feedback": "Evidence is incomplete. Escalate to a human operator.", "missing_evidence": ["Run live investigation"], "action_approved": false}

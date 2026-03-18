@@ -1,0 +1,80 @@
+{
+  "triage": {
+    "domain": "oom",
+    "severity": "P2",
+    "service_name": "redis-cache",
+    "namespace": "default",
+    "initial_hypotheses": [
+      "Memory pressure indicates unstable workers that should be recycled."
+    ],
+    "key_evidence": [
+      "Memory pressure indicates unstable workers that should be recycled."
+    ],
+    "summary": "Memory pressure indicates unstable workers that should be recycled."
+  },
+  "log_analyst": {
+    "agent_name": "log_analyst",
+    "findings": {
+      "oom_kill": true,
+      "memory_errors": true
+    },
+    "hypothesis_support": {}
+  },
+  "metrics_analyst": {
+    "agent_name": "metrics_analyst",
+    "findings": {
+      "memory": "critical",
+      "cpu": "normal"
+    },
+    "hypothesis_support": {}
+  },
+  "k8s_inspector": {
+    "agent_name": "k8s_inspector",
+    "findings": {
+      "restarts": "increasing",
+      "termination_reason": "OOMKilled"
+    },
+    "hypothesis_support": {}
+  },
+  "github_analyst": {
+    "agent_name": "github_analyst",
+    "findings": {
+      "recent_deployment": true
+    },
+    "hypothesis_support": {}
+  },
+  "root_cause": {
+    "hypotheses": [
+      {
+        "rank": 1,
+        "description": "Memory pressure indicates unstable workers that should be recycled.",
+        "confidence": 0.8,
+        "evidence_for": [
+          "Memory pressure indicates unstable workers that should be recycled."
+        ],
+        "evidence_against": [],
+        "recommended_action": "rollback_deployment"
+      }
+    ],
+    "reasoning_chain": "Memory pressure indicates unstable workers that should be recycled.",
+    "gaps": [],
+    "confidence_overall": 0.8
+  },
+  "critic": {
+    "verdict": "PASS",
+    "confidence": 0.8,
+    "feedback": "OOM evidence is clear and restarting pods is a safe first action.",
+    "missing_evidence": [],
+    "action_approved": true
+  },
+  "remediation": {
+    "action_taken": "rollback_deployment",
+    "parameters": {
+      "service_name": "redis-cache",
+      "namespace": "default"
+    },
+    "justification": "Memory pressure indicates unstable workers that should be recycled.",
+    "verification_needed": "Verify latency, error rate, and pod health after remediation.",
+    "escalation_required": false
+  }
+}

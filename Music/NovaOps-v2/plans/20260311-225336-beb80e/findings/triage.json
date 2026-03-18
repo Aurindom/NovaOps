@@ -1,0 +1,1 @@
+{"domain": "traffic_surge", "severity": "P2", "service_name": "search-indexer", "namespace": "default", "initial_hypotheses": ["Checkout is under elevated demand and should scale horizontally."], "key_evidence": ["Checkout is under elevated demand and should scale horizontally."], "summary": "Checkout is under elevated demand and should scale horizontally."}

@@ -1,0 +1,1626 @@
+[0;32m[Nova-Agent][0m ======================================================================
+[0;32m[Nova-Agent][0m STARTING BATCH EVALUATION
+[0;32m[Nova-Agent][0m Testing NovaOps v2 dual-pipeline across 7 diverse incident scenarios
+[0;32m[Nova-Agent][0m ======================================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m SCENARIO: Redis Cache OOM — Bad Deployment
+[0;32m[Nova-Agent][0m SERVICE:  redis-cache
+[0;32m[Nova-Agent][0m EXPECTED: rollback_deployment
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   NovaOps v2 — Autonomous SRE War Room
+[0;32m[Nova-Agent][0m   Alert: Redis Cache OOM — Bad Deployment on redis-cache
+[0;32m[Nova-Agent][0m   Time: 2026-03-11T23:18:00.382409
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m [*] Investigation ID: 20260311-231800-b0213b
+[0;32m[Nova-Agent][0m [*] Building war room graph...
+[0;32m[Nova-Agent][0m [*] Domain: oom
+[0;32m[Nova-Agent][0m [*] Starting investigation...
+
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   Investigation Complete
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m {"action_taken": "rollback_deployment", "parameters": {"service_name": "redis-cache", "namespace": "default"}, "justification": "Memory pressure indicates unstable workers that should be recycled.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}
+[0;32m[Nova-Agent][0m {"verdict": "PASS", "confidence": 0.8, "feedback": "OOM evidence is clear and restarting pods is a safe first action.", "missing_evidence": [], "action_approved": true}
+[0;32m[Nova-Agent][0m {"hypotheses": [{"rank": 1, "description": "Memory pressure indicates unstable workers that should be recycled.", "confidence": 0.8, "evidence_for": ["Memory pressure indicates unstable workers that should be recycled."], "evidence_against": [], "recommended_action": "rollback_deployment"}], "reasoning_chain": "Memory pressure indicates unstable workers that should be recycled.", "gaps": [], "confidence_overall": 0.8}
+
+[0;32m[Nova-Agent][0m [*] Report saved: E:\Nova Hackathon\NOVA-GOVERNANCE-BRANCH\NovaOps\Music\NovaOps-v2\plans\20260311-231800-b0213b\report.md
+[0;32m[Nova-Agent][0m [*] Convening jury for independent blind validation...
+[0;32m[Nova-Agent][0m [*] Jury: action=scale_deployment conf=0.91 escalate=True
+[0;32m[Nova-Agent][0m [*] Convergence: DISAGREE — adjusted_confidence=0.50
+[0;32m[Nova-Agent][0m [*] Governance: decision=REQUIRE_APPROVAL risk=70/100 policy=rollback_always_requires_approval
+
+[0;32m[Nova-Agent][0m --- Full Result ---
+[0;32m[Nova-Agent][0m {
+[0;32m[Nova-Agent][0m   "incident_id": "20260311-231800-b0213b",
+[0;32m[Nova-Agent][0m   "domain": "oom",
+[0;32m[Nova-Agent][0m   "result": "{\"action_taken\": \"rollback_deployment\", \"parameters\": {\"service_name\": \"redis-cache\", \"namespace\": \"default\"}, \"justification\": \"Memory pressure indicates unstable workers that should be recycled.\", \"verification_needed\": \"Verify latency, error rate, and pod health after remediation.\", \"escalation_required\": false}\n{\"verdict\": \"PASS\", \"confidence\": 0.8, \"feedback\": \"OOM evidence is clear and restarting pods is a safe first action.\", \"missing_evidence\": [], \"action_approved\": true}\n{\"hypotheses\": [{\"rank\": 1, \"description\": \"Memory pressure indicates unstable workers that should be recycled.\", \"confidence\": 0.8, \"evidence_for\": [\"Memory pressure indicates unstable workers that should be recycled.\"], \"evidence_against\": [], \"recommended_action\": \"rollback_deployment\"}], \"reasoning_chain\": \"Memory pressure indicates unstable workers that should be recycled.\", \"gaps\": [], \"confidence_overall\": 0.8}",
+[0;32m[Nova-Agent][0m   "proposed_action": {
+[0;32m[Nova-Agent][0m     "tool": "rollback_deployment",
+[0;32m[Nova-Agent][0m     "parameters": {
+[0;32m[Nova-Agent][0m       "service_name": "redis-cache",
+[0;32m[Nova-Agent][0m       "namespace": "default"
+[0;32m[Nova-Agent][0m     }
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "validation_summary": {
+[0;32m[Nova-Agent][0m     "total_nodes": 8,
+[0;32m[Nova-Agent][0m     "valid_nodes": 8,
+[0;32m[Nova-Agent][0m     "invalid_nodes": [],
+[0;32m[Nova-Agent][0m     "schema_score": 1.0,
+[0;32m[Nova-Agent][0m     "nodes": [
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "triage",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 356
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "root_cause_reasoner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 421
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "critic",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 168
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "remediation_planner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 316
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "log_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 41
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "metrics_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 39
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "k8s_inspector",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 61
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "github_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 27
+[0;32m[Nova-Agent][0m       }
+[0;32m[Nova-Agent][0m     ]
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "report_path": "E:\\Nova Hackathon\\NOVA-GOVERNANCE-BRANCH\\NovaOps\\Music\\NovaOps-v2\\plans\\20260311-231800-b0213b\\report.md",
+[0;32m[Nova-Agent][0m   "severity": "P2",
+[0;32m[Nova-Agent][0m   "governance_decision": "REQUIRE_APPROVAL",
+[0;32m[Nova-Agent][0m   "governance_status": "pending_approval",
+[0;32m[Nova-Agent][0m   "risk_score": 70,
+[0;32m[Nova-Agent][0m   "policy_name": "rollback_always_requires_approval",
+[0;32m[Nova-Agent][0m   "confidence": 0.5,
+[0;32m[Nova-Agent][0m   "confidence_source": "convergence_disagreement"
+[0;32m[Nova-Agent][0m }
+
+[0;32m[Nova-Agent][0m --- Test Judgment ---
+[0;32m[Nova-Agent][0m Status:       PASS
+[0;32m[Nova-Agent][0m Tool:         rollback_deployment (expected: rollback_deployment)
+[0;32m[Nova-Agent][0m Governance:   REQUIRE_APPROVAL
+[0;32m[Nova-Agent][0m Confidence:   0.50
+[0;32m[Nova-Agent][0m Risk Score:   70/100
+[0;32m[Nova-Agent][0m Policy:       rollback_always_requires_approval
+[0;32m[Nova-Agent][0m Reason:       Tool matched (rollback_deployment), governance approved
+
+[0;32m[Nova-Agent][0m ✅ PASS: Agent correctly chose 'rollback_deployment' for Redis Cache OOM — Bad Deployment.
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m SCENARIO: Checkout API — Black Friday Traffic Surge
+[0;32m[Nova-Agent][0m SERVICE:  checkout-api
+[0;32m[Nova-Agent][0m EXPECTED: scale_deployment
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   NovaOps v2 — Autonomous SRE War Room
+[0;32m[Nova-Agent][0m   Alert: Checkout API — Black Friday Traffic Surge on checkout-api
+[0;32m[Nova-Agent][0m   Time: 2026-03-11T23:18:02.808456
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m [*] Investigation ID: 20260311-231802-4952bd
+[0;32m[Nova-Agent][0m [*] Building war room graph...
+[0;32m[Nova-Agent][0m [*] Domain: traffic_surge
+[0;32m[Nova-Agent][0m [*] Starting investigation...
+
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   Investigation Complete
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m {"action_taken": "scale_deployment", "parameters": {"service_name": "checkout-api", "namespace": "default", "target_replicas": 4}, "justification": "Checkout is under elevated demand and should scale horizontally.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}
+[0;32m[Nova-Agent][0m {"verdict": "PASS", "confidence": 0.88, "feedback": "Traffic surge pattern is consistent across logs and metrics.", "missing_evidence": [], "action_approved": true}
+[0;32m[Nova-Agent][0m {"hypotheses": [{"rank": 1, "description": "Checkout is under elevated demand and should scale horizontally.", "confidence": 0.88, "evidence_for": ["Checkout is under elevated demand and should scale horizontally."], "evidence_against": [], "recommended_action": "scale_deployment"}], "reasoning_chain": "Checkout is under elevated demand and should scale horizontally.", "gaps": [], "confidence_overall": 0.88}
+
+[0;32m[Nova-Agent][0m [*] Report saved: E:\Nova Hackathon\NOVA-GOVERNANCE-BRANCH\NovaOps\Music\NovaOps-v2\plans\20260311-231802-4952bd\report.md
+[0;32m[Nova-Agent][0m [*] Convening jury for independent blind validation...
+[0;32m[Nova-Agent][0m [*] Jury: action=scale_deployment conf=0.91 escalate=True
+[0;32m[Nova-Agent][0m [*] Convergence: DISAGREE — adjusted_confidence=0.58
+[0;32m[Nova-Agent][0m [*] Governance: decision=REQUIRE_APPROVAL risk=41/100 policy=low_confidence_requires_approval
+
+[0;32m[Nova-Agent][0m --- Full Result ---
+[0;32m[Nova-Agent][0m {
+[0;32m[Nova-Agent][0m   "incident_id": "20260311-231802-4952bd",
+[0;32m[Nova-Agent][0m   "domain": "traffic_surge",
+[0;32m[Nova-Agent][0m   "result": "{\"action_taken\": \"scale_deployment\", \"parameters\": {\"service_name\": \"checkout-api\", \"namespace\": \"default\", \"target_replicas\": 4}, \"justification\": \"Checkout is under elevated demand and should scale horizontally.\", \"verification_needed\": \"Verify latency, error rate, and pod health after remediation.\", \"escalation_required\": false}\n{\"verdict\": \"PASS\", \"confidence\": 0.88, \"feedback\": \"Traffic surge pattern is consistent across logs and metrics.\", \"missing_evidence\": [], \"action_approved\": true}\n{\"hypotheses\": [{\"rank\": 1, \"description\": \"Checkout is under elevated demand and should scale horizontally.\", \"confidence\": 0.88, \"evidence_for\": [\"Checkout is under elevated demand and should scale horizontally.\"], \"evidence_against\": [], \"recommended_action\": \"scale_deployment\"}], \"reasoning_chain\": \"Checkout is under elevated demand and should scale horizontally.\", \"gaps\": [], \"confidence_overall\": 0.88}",
+[0;32m[Nova-Agent][0m   "proposed_action": {
+[0;32m[Nova-Agent][0m     "tool": "scale_deployment",
+[0;32m[Nova-Agent][0m     "parameters": {
+[0;32m[Nova-Agent][0m       "service_name": "checkout-api",
+[0;32m[Nova-Agent][0m       "namespace": "default",
+[0;32m[Nova-Agent][0m       "target_replicas": 4
+[0;32m[Nova-Agent][0m     }
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "validation_summary": {
+[0;32m[Nova-Agent][0m     "total_nodes": 8,
+[0;32m[Nova-Agent][0m     "valid_nodes": 8,
+[0;32m[Nova-Agent][0m     "invalid_nodes": [],
+[0;32m[Nova-Agent][0m     "schema_score": 1.0,
+[0;32m[Nova-Agent][0m     "nodes": [
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "triage",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 358
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "root_cause_reasoner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 411
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "critic",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 164
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "remediation_planner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 333
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "log_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 49
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "metrics_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 60
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "k8s_inspector",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 39
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "github_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 28
+[0;32m[Nova-Agent][0m       }
+[0;32m[Nova-Agent][0m     ]
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "report_path": "E:\\Nova Hackathon\\NOVA-GOVERNANCE-BRANCH\\NovaOps\\Music\\NovaOps-v2\\plans\\20260311-231802-4952bd\\report.md",
+[0;32m[Nova-Agent][0m   "severity": "P2",
+[0;32m[Nova-Agent][0m   "governance_decision": "REQUIRE_APPROVAL",
+[0;32m[Nova-Agent][0m   "governance_status": "pending_approval",
+[0;32m[Nova-Agent][0m   "risk_score": 41,
+[0;32m[Nova-Agent][0m   "policy_name": "low_confidence_requires_approval",
+[0;32m[Nova-Agent][0m   "confidence": 0.5800000000000001,
+[0;32m[Nova-Agent][0m   "confidence_source": "convergence_disagreement"
+[0;32m[Nova-Agent][0m }
+
+[0;32m[Nova-Agent][0m --- Test Judgment ---
+[0;32m[Nova-Agent][0m Status:       PASS
+[0;32m[Nova-Agent][0m Tool:         scale_deployment (expected: scale_deployment)
+[0;32m[Nova-Agent][0m Governance:   REQUIRE_APPROVAL
+[0;32m[Nova-Agent][0m Confidence:   0.58
+[0;32m[Nova-Agent][0m Risk Score:   41/100
+[0;32m[Nova-Agent][0m Policy:       low_confidence_requires_approval
+[0;32m[Nova-Agent][0m Reason:       Tool matched (scale_deployment), governance approved
+
+[0;32m[Nova-Agent][0m ✅ PASS: Agent correctly chose 'scale_deployment' for Checkout API — Black Friday Traffic Surge.
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m SCENARIO: Auth Service — OAuth Thread Deadlock
+[0;32m[Nova-Agent][0m SERVICE:  auth-service
+[0;32m[Nova-Agent][0m EXPECTED: restart_pods
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   NovaOps v2 — Autonomous SRE War Room
+[0;32m[Nova-Agent][0m   Alert: Auth Service — OAuth Thread Deadlock on auth-service
+[0;32m[Nova-Agent][0m   Time: 2026-03-11T23:18:04.935754
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m [*] Investigation ID: 20260311-231804-fd651e
+[0;32m[Nova-Agent][0m [*] Building war room graph...
+[0;32m[Nova-Agent][0m [*] Domain: deadlock
+[0;32m[Nova-Agent][0m [*] Starting investigation...
+
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   Investigation Complete
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m {"action_taken": "restart_pods", "parameters": {"service_name": "auth-service", "namespace": "default"}, "justification": "Thread deadlock requires pod restart to recover execution flow.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}
+[0;32m[Nova-Agent][0m {"verdict": "PASS", "confidence": 0.82, "feedback": "Deadlock detected; restarting pods will clear the deadlock state.", "missing_evidence": [], "action_approved": true}
+[0;32m[Nova-Agent][0m {"hypotheses": [{"rank": 1, "description": "Thread deadlock requires pod restart to recover execution flow.", "confidence": 0.82, "evidence_for": ["Thread deadlock requires pod restart to recover execution flow."], "evidence_against": [], "recommended_action": "restart_pods"}], "reasoning_chain": "Thread deadlock requires pod restart to recover execution flow.", "gaps": [], "confidence_overall": 0.82}
+
+[0;32m[Nova-Agent][0m [*] Report saved: E:\Nova Hackathon\NOVA-GOVERNANCE-BRANCH\NovaOps\Music\NovaOps-v2\plans\20260311-231804-fd651e\report.md
+[0;32m[Nova-Agent][0m [*] Convening jury for independent blind validation...
+[0;32m[Nova-Agent][0m [*] Jury: action=scale_deployment conf=0.91 escalate=True
+[0;32m[Nova-Agent][0m [*] Convergence: DISAGREE — adjusted_confidence=0.52
+[0;32m[Nova-Agent][0m [*] Governance: decision=REQUIRE_APPROVAL risk=49/100 policy=low_confidence_requires_approval
+
+[0;32m[Nova-Agent][0m --- Full Result ---
+[0;32m[Nova-Agent][0m {
+[0;32m[Nova-Agent][0m   "incident_id": "20260311-231804-fd651e",
+[0;32m[Nova-Agent][0m   "domain": "deadlock",
+[0;32m[Nova-Agent][0m   "result": "{\"action_taken\": \"restart_pods\", \"parameters\": {\"service_name\": \"auth-service\", \"namespace\": \"default\"}, \"justification\": \"Thread deadlock requires pod restart to recover execution flow.\", \"verification_needed\": \"Verify latency, error rate, and pod health after remediation.\", \"escalation_required\": false}\n{\"verdict\": \"PASS\", \"confidence\": 0.82, \"feedback\": \"Deadlock detected; restarting pods will clear the deadlock state.\", \"missing_evidence\": [], \"action_approved\": true}\n{\"hypotheses\": [{\"rank\": 1, \"description\": \"Thread deadlock requires pod restart to recover execution flow.\", \"confidence\": 0.82, \"evidence_for\": [\"Thread deadlock requires pod restart to recover execution flow.\"], \"evidence_against\": [], \"recommended_action\": \"restart_pods\"}], \"reasoning_chain\": \"Thread deadlock requires pod restart to recover execution flow.\", \"gaps\": [], \"confidence_overall\": 0.82}",
+[0;32m[Nova-Agent][0m   "proposed_action": {
+[0;32m[Nova-Agent][0m     "tool": "restart_pods",
+[0;32m[Nova-Agent][0m     "parameters": {
+[0;32m[Nova-Agent][0m       "service_name": "auth-service",
+[0;32m[Nova-Agent][0m       "namespace": "default"
+[0;32m[Nova-Agent][0m     }
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "validation_summary": {
+[0;32m[Nova-Agent][0m     "total_nodes": 8,
+[0;32m[Nova-Agent][0m     "valid_nodes": 8,
+[0;32m[Nova-Agent][0m     "invalid_nodes": [],
+[0;32m[Nova-Agent][0m     "schema_score": 1.0,
+[0;32m[Nova-Agent][0m     "nodes": [
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "triage",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 350
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "root_cause_reasoner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 404
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "critic",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 169
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "remediation_planner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 306
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "log_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 45
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "metrics_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 38
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "k8s_inspector",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 49
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "github_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 28
+[0;32m[Nova-Agent][0m       }
+[0;32m[Nova-Agent][0m     ]
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "report_path": "E:\\Nova Hackathon\\NOVA-GOVERNANCE-BRANCH\\NovaOps\\Music\\NovaOps-v2\\plans\\20260311-231804-fd651e\\report.md",
+[0;32m[Nova-Agent][0m   "severity": "P2",
+[0;32m[Nova-Agent][0m   "governance_decision": "REQUIRE_APPROVAL",
+[0;32m[Nova-Agent][0m   "governance_status": "pending_approval",
+[0;32m[Nova-Agent][0m   "risk_score": 49,
+[0;32m[Nova-Agent][0m   "policy_name": "low_confidence_requires_approval",
+[0;32m[Nova-Agent][0m   "confidence": 0.52,
+[0;32m[Nova-Agent][0m   "confidence_source": "convergence_disagreement"
+[0;32m[Nova-Agent][0m }
+
+[0;32m[Nova-Agent][0m --- Test Judgment ---
+[0;32m[Nova-Agent][0m Status:       PASS
+[0;32m[Nova-Agent][0m Tool:         restart_pods (expected: restart_pods)
+[0;32m[Nova-Agent][0m Governance:   REQUIRE_APPROVAL
+[0;32m[Nova-Agent][0m Confidence:   0.52
+[0;32m[Nova-Agent][0m Risk Score:   49/100
+[0;32m[Nova-Agent][0m Policy:       low_confidence_requires_approval
+[0;32m[Nova-Agent][0m Reason:       Tool matched (restart_pods), governance approved
+
+[0;32m[Nova-Agent][0m ✅ PASS: Agent correctly chose 'restart_pods' for Auth Service — OAuth Thread Deadlock.
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m SCENARIO: Inventory DB — Bad Credential Rotation
+[0;32m[Nova-Agent][0m SERVICE:  inventory-db
+[0;32m[Nova-Agent][0m EXPECTED: rollback_deployment
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   NovaOps v2 — Autonomous SRE War Room
+[0;32m[Nova-Agent][0m   Alert: Inventory DB — Bad Credential Rotation on inventory-db
+[0;32m[Nova-Agent][0m   Time: 2026-03-11T23:18:07.069043
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m [*] Investigation ID: 20260311-231807-b64f99
+[0;32m[Nova-Agent][0m [*] Building war room graph...
+[0;32m[Nova-Agent][0m [*] Domain: config_drift
+[0;32m[Nova-Agent][0m [*] Starting investigation...
+
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   Investigation Complete
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m {"action_taken": "rollback_deployment", "parameters": {"service_name": "inventory-db", "namespace": "default"}, "justification": "Configuration error requires deployment rollback to restore service stability.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}
+[0;32m[Nova-Agent][0m {"verdict": "PASS", "confidence": 0.85, "feedback": "Configuration drift is best resolved by rolling back to last known-good version.", "missing_evidence": [], "action_approved": true}
+[0;32m[Nova-Agent][0m {"hypotheses": [{"rank": 1, "description": "Configuration error requires deployment rollback to restore service stability.", "confidence": 0.85, "evidence_for": ["Configuration error requires deployment rollback to restore service stability."], "evidence_against": [], "recommended_action": "rollback_deployment"}], "reasoning_chain": "Configuration error requires deployment rollback to restore service stability.", "gaps": [], "confidence_overall": 0.85}
+
+[0;32m[Nova-Agent][0m [*] Report saved: E:\Nova Hackathon\NOVA-GOVERNANCE-BRANCH\NovaOps\Music\NovaOps-v2\plans\20260311-231807-b64f99\report.md
+[0;32m[Nova-Agent][0m [*] Convening jury for independent blind validation...
+[0;32m[Nova-Agent][0m [*] Jury: action=scale_deployment conf=0.91 escalate=True
+[0;32m[Nova-Agent][0m [*] Convergence: DISAGREE — adjusted_confidence=0.55
+[0;32m[Nova-Agent][0m [*] Governance: decision=REQUIRE_APPROVAL risk=67/100 policy=rollback_always_requires_approval
+
+[0;32m[Nova-Agent][0m --- Full Result ---
+[0;32m[Nova-Agent][0m {
+[0;32m[Nova-Agent][0m   "incident_id": "20260311-231807-b64f99",
+[0;32m[Nova-Agent][0m   "domain": "config_drift",
+[0;32m[Nova-Agent][0m   "result": "{\"action_taken\": \"rollback_deployment\", \"parameters\": {\"service_name\": \"inventory-db\", \"namespace\": \"default\"}, \"justification\": \"Configuration error requires deployment rollback to restore service stability.\", \"verification_needed\": \"Verify latency, error rate, and pod health after remediation.\", \"escalation_required\": false}\n{\"verdict\": \"PASS\", \"confidence\": 0.85, \"feedback\": \"Configuration drift is best resolved by rolling back to last known-good version.\", \"missing_evidence\": [], \"action_approved\": true}\n{\"hypotheses\": [{\"rank\": 1, \"description\": \"Configuration error requires deployment rollback to restore service stability.\", \"confidence\": 0.85, \"evidence_for\": [\"Configuration error requires deployment rollback to restore service stability.\"], \"evidence_against\": [], \"recommended_action\": \"rollback_deployment\"}], \"reasoning_chain\": \"Configuration error requires deployment rollback to restore service stability.\", \"gaps\": [], \"confidence_overall\": 0.85}",
+[0;32m[Nova-Agent][0m   "proposed_action": {
+[0;32m[Nova-Agent][0m     "tool": "rollback_deployment",
+[0;32m[Nova-Agent][0m     "parameters": {
+[0;32m[Nova-Agent][0m       "service_name": "inventory-db",
+[0;32m[Nova-Agent][0m       "namespace": "default"
+[0;32m[Nova-Agent][0m     }
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "validation_summary": {
+[0;32m[Nova-Agent][0m     "total_nodes": 8,
+[0;32m[Nova-Agent][0m     "valid_nodes": 8,
+[0;32m[Nova-Agent][0m     "invalid_nodes": [],
+[0;32m[Nova-Agent][0m     "schema_score": 1.0,
+[0;32m[Nova-Agent][0m     "nodes": [
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "triage",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 399
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "root_cause_reasoner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 456
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "critic",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 184
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "remediation_planner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 328
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "log_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 60
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "metrics_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 44
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "k8s_inspector",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 63
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "github_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 27
+[0;32m[Nova-Agent][0m       }
+[0;32m[Nova-Agent][0m     ]
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "report_path": "E:\\Nova Hackathon\\NOVA-GOVERNANCE-BRANCH\\NovaOps\\Music\\NovaOps-v2\\plans\\20260311-231807-b64f99\\report.md",
+[0;32m[Nova-Agent][0m   "severity": "P2",
+[0;32m[Nova-Agent][0m   "governance_decision": "REQUIRE_APPROVAL",
+[0;32m[Nova-Agent][0m   "governance_status": "pending_approval",
+[0;32m[Nova-Agent][0m   "risk_score": 67,
+[0;32m[Nova-Agent][0m   "policy_name": "rollback_always_requires_approval",
+[0;32m[Nova-Agent][0m   "confidence": 0.55,
+[0;32m[Nova-Agent][0m   "confidence_source": "convergence_disagreement"
+[0;32m[Nova-Agent][0m }
+
+[0;32m[Nova-Agent][0m --- Test Judgment ---
+[0;32m[Nova-Agent][0m Status:       PASS
+[0;32m[Nova-Agent][0m Tool:         rollback_deployment (expected: rollback_deployment)
+[0;32m[Nova-Agent][0m Governance:   REQUIRE_APPROVAL
+[0;32m[Nova-Agent][0m Confidence:   0.55
+[0;32m[Nova-Agent][0m Risk Score:   67/100
+[0;32m[Nova-Agent][0m Policy:       rollback_always_requires_approval
+[0;32m[Nova-Agent][0m Reason:       Tool matched (rollback_deployment), governance approved
+
+[0;32m[Nova-Agent][0m ✅ PASS: Agent correctly chose 'rollback_deployment' for Inventory DB — Bad Credential Rotation.
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m SCENARIO: Order Processor — Organic Cache Bloat
+[0;32m[Nova-Agent][0m SERVICE:  order-processor
+[0;32m[Nova-Agent][0m EXPECTED: restart_pods
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   NovaOps v2 — Autonomous SRE War Room
+[0;32m[Nova-Agent][0m   Alert: Order Processor — Organic Cache Bloat on order-processor
+[0;32m[Nova-Agent][0m   Time: 2026-03-11T23:18:09.187555
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m [*] Investigation ID: 20260311-231809-c3ff07
+[0;32m[Nova-Agent][0m [*] Building war room graph...
+[0;32m[Nova-Agent][0m [*] Domain: oom
+[0;32m[Nova-Agent][0m [*] Starting investigation...
+
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   Investigation Complete
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m {"action_taken": "restart_pods", "parameters": {"service_name": "order-processor", "namespace": "default"}, "justification": "Memory pressure indicates unstable workers that should be recycled.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}
+[0;32m[Nova-Agent][0m {"verdict": "PASS", "confidence": 0.83, "feedback": "OOM evidence is clear and restarting pods is a safe first action.", "missing_evidence": [], "action_approved": true}
+[0;32m[Nova-Agent][0m {"hypotheses": [{"rank": 1, "description": "Memory pressure indicates unstable workers that should be recycled.", "confidence": 0.83, "evidence_for": ["Memory pressure indicates unstable workers that should be recycled."], "evidence_against": [], "recommended_action": "restart_pods"}], "reasoning_chain": "Memory pressure indicates unstable workers that should be recycled.", "gaps": [], "confidence_overall": 0.83}
+
+[0;32m[Nova-Agent][0m [*] Report saved: E:\Nova Hackathon\NOVA-GOVERNANCE-BRANCH\NovaOps\Music\NovaOps-v2\plans\20260311-231809-c3ff07\report.md
+[0;32m[Nova-Agent][0m [*] Convening jury for independent blind validation...
+[0;32m[Nova-Agent][0m [*] Jury: action=scale_deployment conf=0.91 escalate=True
+[0;32m[Nova-Agent][0m [*] Convergence: DISAGREE — adjusted_confidence=0.53
+[0;32m[Nova-Agent][0m [*] Governance: decision=REQUIRE_APPROVAL risk=48/100 policy=low_confidence_requires_approval
+
+[0;32m[Nova-Agent][0m --- Full Result ---
+[0;32m[Nova-Agent][0m {
+[0;32m[Nova-Agent][0m   "incident_id": "20260311-231809-c3ff07",
+[0;32m[Nova-Agent][0m   "domain": "oom",
+[0;32m[Nova-Agent][0m   "result": "{\"action_taken\": \"restart_pods\", \"parameters\": {\"service_name\": \"order-processor\", \"namespace\": \"default\"}, \"justification\": \"Memory pressure indicates unstable workers that should be recycled.\", \"verification_needed\": \"Verify latency, error rate, and pod health after remediation.\", \"escalation_required\": false}\n{\"verdict\": \"PASS\", \"confidence\": 0.83, \"feedback\": \"OOM evidence is clear and restarting pods is a safe first action.\", \"missing_evidence\": [], \"action_approved\": true}\n{\"hypotheses\": [{\"rank\": 1, \"description\": \"Memory pressure indicates unstable workers that should be recycled.\", \"confidence\": 0.83, \"evidence_for\": [\"Memory pressure indicates unstable workers that should be recycled.\"], \"evidence_against\": [], \"recommended_action\": \"restart_pods\"}], \"reasoning_chain\": \"Memory pressure indicates unstable workers that should be recycled.\", \"gaps\": [], \"confidence_overall\": 0.83}",
+[0;32m[Nova-Agent][0m   "proposed_action": {
+[0;32m[Nova-Agent][0m     "tool": "restart_pods",
+[0;32m[Nova-Agent][0m     "parameters": {
+[0;32m[Nova-Agent][0m       "service_name": "order-processor",
+[0;32m[Nova-Agent][0m       "namespace": "default"
+[0;32m[Nova-Agent][0m     }
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "validation_summary": {
+[0;32m[Nova-Agent][0m     "total_nodes": 8,
+[0;32m[Nova-Agent][0m     "valid_nodes": 8,
+[0;32m[Nova-Agent][0m     "invalid_nodes": [],
+[0;32m[Nova-Agent][0m     "schema_score": 1.0,
+[0;32m[Nova-Agent][0m     "nodes": [
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "triage",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 360
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "root_cause_reasoner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 416
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "critic",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 169
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "remediation_planner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 313
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "log_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 41
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "metrics_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 39
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "k8s_inspector",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 61
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "github_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 27
+[0;32m[Nova-Agent][0m       }
+[0;32m[Nova-Agent][0m     ]
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "report_path": "E:\\Nova Hackathon\\NOVA-GOVERNANCE-BRANCH\\NovaOps\\Music\\NovaOps-v2\\plans\\20260311-231809-c3ff07\\report.md",
+[0;32m[Nova-Agent][0m   "severity": "P2",
+[0;32m[Nova-Agent][0m   "governance_decision": "REQUIRE_APPROVAL",
+[0;32m[Nova-Agent][0m   "governance_status": "pending_approval",
+[0;32m[Nova-Agent][0m   "risk_score": 48,
+[0;32m[Nova-Agent][0m   "policy_name": "low_confidence_requires_approval",
+[0;32m[Nova-Agent][0m   "confidence": 0.53,
+[0;32m[Nova-Agent][0m   "confidence_source": "convergence_disagreement"
+[0;32m[Nova-Agent][0m }
+
+[0;32m[Nova-Agent][0m --- Test Judgment ---
+[0;32m[Nova-Agent][0m Status:       PASS
+[0;32m[Nova-Agent][0m Tool:         restart_pods (expected: restart_pods)
+[0;32m[Nova-Agent][0m Governance:   REQUIRE_APPROVAL
+[0;32m[Nova-Agent][0m Confidence:   0.53
+[0;32m[Nova-Agent][0m Risk Score:   48/100
+[0;32m[Nova-Agent][0m Policy:       low_confidence_requires_approval
+[0;32m[Nova-Agent][0m Reason:       Tool matched (restart_pods), governance approved
+
+[0;32m[Nova-Agent][0m ✅ PASS: Agent correctly chose 'restart_pods' for Order Processor — Organic Cache Bloat.
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m SCENARIO: Notification Service — Twilio SMS Outage
+[0;32m[Nova-Agent][0m SERVICE:  notification-service
+[0;32m[Nova-Agent][0m EXPECTED: noop_require_human
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   NovaOps v2 — Autonomous SRE War Room
+[0;32m[Nova-Agent][0m   Alert: Notification Service — Twilio SMS Outage on notification-service
+[0;32m[Nova-Agent][0m   Time: 2026-03-11T23:18:11.317503
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m [*] Investigation ID: 20260311-231811-046cba
+[0;32m[Nova-Agent][0m [*] Building war room graph...
+[0;32m[Nova-Agent][0m [*] Domain: unknown
+[0;32m[Nova-Agent][0m [*] Starting investigation...
+
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   Investigation Complete
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m {"action_taken": "noop_require_human", "parameters": {"service_name": "notification-service", "namespace": "default"}, "justification": "Signal does not match a known domain with enough confidence.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": true}
+[0;32m[Nova-Agent][0m {"verdict": "FAIL", "confidence": 0.45, "feedback": "Evidence is incomplete. Escalate to a human operator.", "missing_evidence": ["Run live investigation"], "action_approved": false}
+[0;32m[Nova-Agent][0m {"hypotheses": [{"rank": 1, "description": "Signal does not match a known domain with enough confidence.", "confidence": 0.45, "evidence_for": ["Signal does not match a known domain with enough confidence."], "evidence_against": [], "recommended_action": "noop_require_human"}], "reasoning_chain": "Signal does not match a known domain with enough confidence.", "gaps": ["Human review recommended"], "confidence_overall": 0.45}
+
+[0;32m[Nova-Agent][0m [*] Report saved: E:\Nova Hackathon\NOVA-GOVERNANCE-BRANCH\NovaOps\Music\NovaOps-v2\plans\20260311-231811-046cba\report.md
+[0;32m[Nova-Agent][0m [*] Convening jury for independent blind validation...
+[0;32m[Nova-Agent][0m [*] Jury: action=scale_deployment conf=0.91 escalate=True
+[0;32m[Nova-Agent][0m [*] Convergence: DISAGREE — adjusted_confidence=0.15
+[0;32m[Nova-Agent][0m [*] Governance: decision=REQUIRE_APPROVAL risk=44/100 policy=noop_requires_approval
+
+[0;32m[Nova-Agent][0m --- Full Result ---
+[0;32m[Nova-Agent][0m {
+[0;32m[Nova-Agent][0m   "incident_id": "20260311-231811-046cba",
+[0;32m[Nova-Agent][0m   "domain": "unknown",
+[0;32m[Nova-Agent][0m   "result": "{\"action_taken\": \"noop_require_human\", \"parameters\": {\"service_name\": \"notification-service\", \"namespace\": \"default\"}, \"justification\": \"Signal does not match a known domain with enough confidence.\", \"verification_needed\": \"Verify latency, error rate, and pod health after remediation.\", \"escalation_required\": true}\n{\"verdict\": \"FAIL\", \"confidence\": 0.45, \"feedback\": \"Evidence is incomplete. Escalate to a human operator.\", \"missing_evidence\": [\"Run live investigation\"], \"action_approved\": false}\n{\"hypotheses\": [{\"rank\": 1, \"description\": \"Signal does not match a known domain with enough confidence.\", \"confidence\": 0.45, \"evidence_for\": [\"Signal does not match a known domain with enough confidence.\"], \"evidence_against\": [], \"recommended_action\": \"noop_require_human\"}], \"reasoning_chain\": \"Signal does not match a known domain with enough confidence.\", \"gaps\": [\"Human review recommended\"], \"confidence_overall\": 0.45}",
+[0;32m[Nova-Agent][0m   "proposed_action": {
+[0;32m[Nova-Agent][0m     "tool": "noop_require_human",
+[0;32m[Nova-Agent][0m     "parameters": {
+[0;32m[Nova-Agent][0m       "service_name": "notification-service",
+[0;32m[Nova-Agent][0m       "namespace": "default"
+[0;32m[Nova-Agent][0m     }
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "validation_summary": {
+[0;32m[Nova-Agent][0m     "total_nodes": 8,
+[0;32m[Nova-Agent][0m     "valid_nodes": 8,
+[0;32m[Nova-Agent][0m     "invalid_nodes": [],
+[0;32m[Nova-Agent][0m     "schema_score": 1.0,
+[0;32m[Nova-Agent][0m     "nodes": [
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "triage",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 348
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "root_cause_reasoner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 427
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "critic",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 182
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "remediation_planner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 316
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "log_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 63
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "metrics_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 61
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "k8s_inspector",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 60
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "github_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 70
+[0;32m[Nova-Agent][0m       }
+[0;32m[Nova-Agent][0m     ]
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "report_path": "E:\\Nova Hackathon\\NOVA-GOVERNANCE-BRANCH\\NovaOps\\Music\\NovaOps-v2\\plans\\20260311-231811-046cba\\report.md",
+[0;32m[Nova-Agent][0m   "severity": "P2",
+[0;32m[Nova-Agent][0m   "governance_decision": "REQUIRE_APPROVAL",
+[0;32m[Nova-Agent][0m   "governance_status": "pending_approval",
+[0;32m[Nova-Agent][0m   "risk_score": 44,
+[0;32m[Nova-Agent][0m   "policy_name": "noop_requires_approval",
+[0;32m[Nova-Agent][0m   "confidence": 0.15000000000000002,
+[0;32m[Nova-Agent][0m   "confidence_source": "convergence_disagreement"
+[0;32m[Nova-Agent][0m }
+
+[0;32m[Nova-Agent][0m --- Test Judgment ---
+[0;32m[Nova-Agent][0m Status:       PASS
+[0;32m[Nova-Agent][0m Tool:         noop_require_human (expected: noop_require_human)
+[0;32m[Nova-Agent][0m Governance:   REQUIRE_APPROVAL
+[0;32m[Nova-Agent][0m Confidence:   0.15
+[0;32m[Nova-Agent][0m Risk Score:   44/100
+[0;32m[Nova-Agent][0m Policy:       noop_requires_approval
+[0;32m[Nova-Agent][0m Reason:       Tool matched (noop_require_human), governance approved
+
+[0;32m[Nova-Agent][0m ✅ PASS: Agent correctly chose 'noop_require_human' for Notification Service — Twilio SMS Outage.
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m SCENARIO: Search Indexer — Zero-Shot CPU Spike
+[0;32m[Nova-Agent][0m SERVICE:  search-indexer
+[0;32m[Nova-Agent][0m EXPECTED: scale_deployment
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   NovaOps v2 — Autonomous SRE War Room
+[0;32m[Nova-Agent][0m   Alert: Search Indexer — Zero-Shot CPU Spike on search-indexer
+[0;32m[Nova-Agent][0m   Time: 2026-03-11T23:18:13.395926
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m [*] Investigation ID: 20260311-231813-aa5fc6
+[0;32m[Nova-Agent][0m [*] Building war room graph...
+[0;32m[Nova-Agent][0m [*] Domain: traffic_surge
+[0;32m[Nova-Agent][0m [*] Starting investigation...
+
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   Investigation Complete
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m {"action_taken": "scale_deployment", "parameters": {"service_name": "search-indexer", "namespace": "default", "target_replicas": 4}, "justification": "Checkout is under elevated demand and should scale horizontally.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}
+[0;32m[Nova-Agent][0m {"verdict": "PASS", "confidence": 0.88, "feedback": "Traffic surge pattern is consistent across logs and metrics.", "missing_evidence": [], "action_approved": true}
+[0;32m[Nova-Agent][0m {"hypotheses": [{"rank": 1, "description": "Checkout is under elevated demand and should scale horizontally.", "confidence": 0.88, "evidence_for": ["Checkout is under elevated demand and should scale horizontally."], "evidence_against": [], "recommended_action": "scale_deployment"}], "reasoning_chain": "Checkout is under elevated demand and should scale horizontally.", "gaps": [], "confidence_overall": 0.88}
+
+[0;32m[Nova-Agent][0m [*] Report saved: E:\Nova Hackathon\NOVA-GOVERNANCE-BRANCH\NovaOps\Music\NovaOps-v2\plans\20260311-231813-aa5fc6\report.md
+[0;32m[Nova-Agent][0m [*] Convening jury for independent blind validation...
+[0;32m[Nova-Agent][0m [*] Jury: action=scale_deployment conf=0.91 escalate=True
+[0;32m[Nova-Agent][0m [*] Convergence: DISAGREE — adjusted_confidence=0.58
+[0;32m[Nova-Agent][0m [*] Governance: decision=REQUIRE_APPROVAL risk=41/100 policy=low_confidence_requires_approval
+
+[0;32m[Nova-Agent][0m --- Full Result ---
+[0;32m[Nova-Agent][0m {
+[0;32m[Nova-Agent][0m   "incident_id": "20260311-231813-aa5fc6",
+[0;32m[Nova-Agent][0m   "domain": "traffic_surge",
+[0;32m[Nova-Agent][0m   "result": "{\"action_taken\": \"scale_deployment\", \"parameters\": {\"service_name\": \"search-indexer\", \"namespace\": \"default\", \"target_replicas\": 4}, \"justification\": \"Checkout is under elevated demand and should scale horizontally.\", \"verification_needed\": \"Verify latency, error rate, and pod health after remediation.\", \"escalation_required\": false}\n{\"verdict\": \"PASS\", \"confidence\": 0.88, \"feedback\": \"Traffic surge pattern is consistent across logs and metrics.\", \"missing_evidence\": [], \"action_approved\": true}\n{\"hypotheses\": [{\"rank\": 1, \"description\": \"Checkout is under elevated demand and should scale horizontally.\", \"confidence\": 0.88, \"evidence_for\": [\"Checkout is under elevated demand and should scale horizontally.\"], \"evidence_against\": [], \"recommended_action\": \"scale_deployment\"}], \"reasoning_chain\": \"Checkout is under elevated demand and should scale horizontally.\", \"gaps\": [], \"confidence_overall\": 0.88}",
+[0;32m[Nova-Agent][0m   "proposed_action": {
+[0;32m[Nova-Agent][0m     "tool": "scale_deployment",
+[0;32m[Nova-Agent][0m     "parameters": {
+[0;32m[Nova-Agent][0m       "service_name": "search-indexer",
+[0;32m[Nova-Agent][0m       "namespace": "default",
+[0;32m[Nova-Agent][0m       "target_replicas": 4
+[0;32m[Nova-Agent][0m     }
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "validation_summary": {
+[0;32m[Nova-Agent][0m     "total_nodes": 8,
+[0;32m[Nova-Agent][0m     "valid_nodes": 8,
+[0;32m[Nova-Agent][0m     "invalid_nodes": [],
+[0;32m[Nova-Agent][0m     "schema_score": 1.0,
+[0;32m[Nova-Agent][0m     "nodes": [
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "triage",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 360
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "root_cause_reasoner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 411
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "critic",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 164
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "remediation_planner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 335
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "log_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 49
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "metrics_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 60
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "k8s_inspector",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 39
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "github_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 28
+[0;32m[Nova-Agent][0m       }
+[0;32m[Nova-Agent][0m     ]
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "report_path": "E:\\Nova Hackathon\\NOVA-GOVERNANCE-BRANCH\\NovaOps\\Music\\NovaOps-v2\\plans\\20260311-231813-aa5fc6\\report.md",
+[0;32m[Nova-Agent][0m   "severity": "P2",
+[0;32m[Nova-Agent][0m   "governance_decision": "REQUIRE_APPROVAL",
+[0;32m[Nova-Agent][0m   "governance_status": "pending_approval",
+[0;32m[Nova-Agent][0m   "risk_score": 41,
+[0;32m[Nova-Agent][0m   "policy_name": "low_confidence_requires_approval",
+[0;32m[Nova-Agent][0m   "confidence": 0.5800000000000001,
+[0;32m[Nova-Agent][0m   "confidence_source": "convergence_disagreement"
+[0;32m[Nova-Agent][0m }
+
+[0;32m[Nova-Agent][0m --- Test Judgment ---
+[0;32m[Nova-Agent][0m Status:       PASS
+[0;32m[Nova-Agent][0m Tool:         scale_deployment (expected: scale_deployment)
+[0;32m[Nova-Agent][0m Governance:   REQUIRE_APPROVAL
+[0;32m[Nova-Agent][0m Confidence:   0.58
+[0;32m[Nova-Agent][0m Risk Score:   41/100
+[0;32m[Nova-Agent][0m Policy:       low_confidence_requires_approval
+[0;32m[Nova-Agent][0m Reason:       Tool matched (scale_deployment), governance approved
+
+[0;32m[Nova-Agent][0m ✅ PASS: Agent correctly chose 'scale_deployment' for Search Indexer — Zero-Shot CPU Spike.
+
+[0;32m[Nova-Agent][0m ======================================================================
+[0;32m[Nova-Agent][0m TEST SUMMARY
+[0;32m[Nova-Agent][0m ======================================================================
+
+[0;32m[Nova-Agent][0m Results: 7/7 scenarios PASSED
+
+[0;32m[Nova-Agent][0m ✅ Redis Cache OOM — Bad Deployment: PASS (rollback_deployment)
+[0;32m[Nova-Agent][0m ✅ Checkout API — Black Friday Traffic Surge: PASS (scale_deployment)
+[0;32m[Nova-Agent][0m ✅ Auth Service — OAuth Thread Deadlock: PASS (restart_pods)
+[0;32m[Nova-Agent][0m ✅ Inventory DB — Bad Credential Rotation: PASS (rollback_deployment)
+[0;32m[Nova-Agent][0m ✅ Order Processor — Organic Cache Bloat: PASS (restart_pods)
+[0;32m[Nova-Agent][0m ✅ Notification Service — Twilio SMS Outage: PASS (noop_require_human)
+[0;32m[Nova-Agent][0m ✅ Search Indexer — Zero-Shot CPU Spike: PASS (scale_deployment)
+
+[0;32m[Nova-Agent][0m Success rate: 100.0%
+[0;32m[Nova-Agent][0m ======================================================================
+[0;32m[Nova-Agent][0m STARTING BATCH EVALUATION
+[0;32m[Nova-Agent][0m Testing NovaOps v2 dual-pipeline across 7 diverse incident scenarios
+[0;32m[Nova-Agent][0m ======================================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m SCENARIO: Redis Cache OOM — Bad Deployment
+[0;32m[Nova-Agent][0m SERVICE:  redis-cache
+[0;32m[Nova-Agent][0m EXPECTED: rollback_deployment
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   NovaOps v2 — Autonomous SRE War Room
+[0;32m[Nova-Agent][0m   Alert: Redis Cache OOM — Bad Deployment on redis-cache
+[0;32m[Nova-Agent][0m   Time: 2026-03-11T23:19:05.297680
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m [*] Investigation ID: 20260311-231905-8ce6f3
+[0;32m[Nova-Agent][0m [*] Building war room graph...
+[0;32m[Nova-Agent][0m [*] Domain: oom
+[0;32m[Nova-Agent][0m [*] Starting investigation...
+
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   Investigation Complete
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m {"action_taken": "rollback_deployment", "parameters": {"service_name": "redis-cache", "namespace": "default"}, "justification": "Memory pressure indicates unstable workers that should be recycled.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}
+[0;32m[Nova-Agent][0m {"verdict": "PASS", "confidence": 0.8, "feedback": "OOM evidence is clear and restarting pods is a safe first action.", "missing_evidence": [], "action_approved": true}
+[0;32m[Nova-Agent][0m {"hypotheses": [{"rank": 1, "description": "Memory pressure indicates unstable workers that should be recycled.", "confidence": 0.8, "evidence_for": ["Memory pressure indicates unstable workers that should be recycled."], "evidence_against": [], "recommended_action": "rollback_deployment"}], "reasoning_chain": "Memory pressure indicates unstable workers that should be recycled.", "gaps": [], "confidence_overall": 0.8}
+
+[0;32m[Nova-Agent][0m [*] Report saved: E:\Nova Hackathon\NOVA-GOVERNANCE-BRANCH\NovaOps\Music\NovaOps-v2\plans\20260311-231905-8ce6f3\report.md
+[0;32m[Nova-Agent][0m [*] Convening jury for independent blind validation...
+[0;32m[Nova-Agent][0m [*] Jury: action=scale_deployment conf=0.91 escalate=True
+[0;32m[Nova-Agent][0m [*] Convergence: DISAGREE — adjusted_confidence=0.50
+[0;32m[Nova-Agent][0m [*] Governance: decision=REQUIRE_APPROVAL risk=70/100 policy=rollback_always_requires_approval
+
+[0;32m[Nova-Agent][0m --- Full Result ---
+[0;32m[Nova-Agent][0m {
+[0;32m[Nova-Agent][0m   "incident_id": "20260311-231905-8ce6f3",
+[0;32m[Nova-Agent][0m   "domain": "oom",
+[0;32m[Nova-Agent][0m   "result": "{\"action_taken\": \"rollback_deployment\", \"parameters\": {\"service_name\": \"redis-cache\", \"namespace\": \"default\"}, \"justification\": \"Memory pressure indicates unstable workers that should be recycled.\", \"verification_needed\": \"Verify latency, error rate, and pod health after remediation.\", \"escalation_required\": false}\n{\"verdict\": \"PASS\", \"confidence\": 0.8, \"feedback\": \"OOM evidence is clear and restarting pods is a safe first action.\", \"missing_evidence\": [], \"action_approved\": true}\n{\"hypotheses\": [{\"rank\": 1, \"description\": \"Memory pressure indicates unstable workers that should be recycled.\", \"confidence\": 0.8, \"evidence_for\": [\"Memory pressure indicates unstable workers that should be recycled.\"], \"evidence_against\": [], \"recommended_action\": \"rollback_deployment\"}], \"reasoning_chain\": \"Memory pressure indicates unstable workers that should be recycled.\", \"gaps\": [], \"confidence_overall\": 0.8}",
+[0;32m[Nova-Agent][0m   "proposed_action": {
+[0;32m[Nova-Agent][0m     "tool": "rollback_deployment",
+[0;32m[Nova-Agent][0m     "parameters": {
+[0;32m[Nova-Agent][0m       "service_name": "redis-cache",
+[0;32m[Nova-Agent][0m       "namespace": "default"
+[0;32m[Nova-Agent][0m     }
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "validation_summary": {
+[0;32m[Nova-Agent][0m     "total_nodes": 8,
+[0;32m[Nova-Agent][0m     "valid_nodes": 8,
+[0;32m[Nova-Agent][0m     "invalid_nodes": [],
+[0;32m[Nova-Agent][0m     "schema_score": 1.0,
+[0;32m[Nova-Agent][0m     "nodes": [
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "triage",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 356
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "root_cause_reasoner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 421
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "critic",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 168
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "remediation_planner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 316
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "log_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 41
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "metrics_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 39
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "k8s_inspector",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 61
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "github_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 27
+[0;32m[Nova-Agent][0m       }
+[0;32m[Nova-Agent][0m     ]
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "report_path": "E:\\Nova Hackathon\\NOVA-GOVERNANCE-BRANCH\\NovaOps\\Music\\NovaOps-v2\\plans\\20260311-231905-8ce6f3\\report.md",
+[0;32m[Nova-Agent][0m   "severity": "P2",
+[0;32m[Nova-Agent][0m   "governance_decision": "REQUIRE_APPROVAL",
+[0;32m[Nova-Agent][0m   "governance_status": "pending_approval",
+[0;32m[Nova-Agent][0m   "risk_score": 70,
+[0;32m[Nova-Agent][0m   "policy_name": "rollback_always_requires_approval",
+[0;32m[Nova-Agent][0m   "confidence": 0.5,
+[0;32m[Nova-Agent][0m   "confidence_source": "convergence_disagreement"
+[0;32m[Nova-Agent][0m }
+
+[0;32m[Nova-Agent][0m --- Test Judgment ---
+[0;32m[Nova-Agent][0m Status:       PASS
+[0;32m[Nova-Agent][0m Tool:         rollback_deployment (expected: rollback_deployment)
+[0;32m[Nova-Agent][0m Governance:   REQUIRE_APPROVAL
+[0;32m[Nova-Agent][0m Confidence:   0.50
+[0;32m[Nova-Agent][0m Risk Score:   70/100
+[0;32m[Nova-Agent][0m Policy:       rollback_always_requires_approval
+[0;32m[Nova-Agent][0m Reason:       Tool matched (rollback_deployment), governance approved
+
+[0;32m[Nova-Agent][0m ✅ PASS: Agent correctly chose 'rollback_deployment' for Redis Cache OOM — Bad Deployment.
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m SCENARIO: Checkout API — Black Friday Traffic Surge
+[0;32m[Nova-Agent][0m SERVICE:  checkout-api
+[0;32m[Nova-Agent][0m EXPECTED: scale_deployment
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   NovaOps v2 — Autonomous SRE War Room
+[0;32m[Nova-Agent][0m   Alert: Checkout API — Black Friday Traffic Surge on checkout-api
+[0;32m[Nova-Agent][0m   Time: 2026-03-11T23:19:07.851635
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m [*] Investigation ID: 20260311-231907-95cdcf
+[0;32m[Nova-Agent][0m [*] Building war room graph...
+[0;32m[Nova-Agent][0m [*] Domain: traffic_surge
+[0;32m[Nova-Agent][0m [*] Starting investigation...
+
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   Investigation Complete
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m {"action_taken": "scale_deployment", "parameters": {"service_name": "checkout-api", "namespace": "default", "target_replicas": 4}, "justification": "Checkout is under elevated demand and should scale horizontally.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}
+[0;32m[Nova-Agent][0m {"verdict": "PASS", "confidence": 0.88, "feedback": "Traffic surge pattern is consistent across logs and metrics.", "missing_evidence": [], "action_approved": true}
+[0;32m[Nova-Agent][0m {"hypotheses": [{"rank": 1, "description": "Checkout is under elevated demand and should scale horizontally.", "confidence": 0.88, "evidence_for": ["Checkout is under elevated demand and should scale horizontally."], "evidence_against": [], "recommended_action": "scale_deployment"}], "reasoning_chain": "Checkout is under elevated demand and should scale horizontally.", "gaps": [], "confidence_overall": 0.88}
+
+[0;32m[Nova-Agent][0m [*] Report saved: E:\Nova Hackathon\NOVA-GOVERNANCE-BRANCH\NovaOps\Music\NovaOps-v2\plans\20260311-231907-95cdcf\report.md
+[0;32m[Nova-Agent][0m [*] Convening jury for independent blind validation...
+[0;32m[Nova-Agent][0m [*] Jury: action=scale_deployment conf=0.91 escalate=True
+[0;32m[Nova-Agent][0m [*] Convergence: DISAGREE — adjusted_confidence=0.58
+[0;32m[Nova-Agent][0m [*] Governance: decision=REQUIRE_APPROVAL risk=41/100 policy=low_confidence_requires_approval
+
+[0;32m[Nova-Agent][0m --- Full Result ---
+[0;32m[Nova-Agent][0m {
+[0;32m[Nova-Agent][0m   "incident_id": "20260311-231907-95cdcf",
+[0;32m[Nova-Agent][0m   "domain": "traffic_surge",
+[0;32m[Nova-Agent][0m   "result": "{\"action_taken\": \"scale_deployment\", \"parameters\": {\"service_name\": \"checkout-api\", \"namespace\": \"default\", \"target_replicas\": 4}, \"justification\": \"Checkout is under elevated demand and should scale horizontally.\", \"verification_needed\": \"Verify latency, error rate, and pod health after remediation.\", \"escalation_required\": false}\n{\"verdict\": \"PASS\", \"confidence\": 0.88, \"feedback\": \"Traffic surge pattern is consistent across logs and metrics.\", \"missing_evidence\": [], \"action_approved\": true}\n{\"hypotheses\": [{\"rank\": 1, \"description\": \"Checkout is under elevated demand and should scale horizontally.\", \"confidence\": 0.88, \"evidence_for\": [\"Checkout is under elevated demand and should scale horizontally.\"], \"evidence_against\": [], \"recommended_action\": \"scale_deployment\"}], \"reasoning_chain\": \"Checkout is under elevated demand and should scale horizontally.\", \"gaps\": [], \"confidence_overall\": 0.88}",
+[0;32m[Nova-Agent][0m   "proposed_action": {
+[0;32m[Nova-Agent][0m     "tool": "scale_deployment",
+[0;32m[Nova-Agent][0m     "parameters": {
+[0;32m[Nova-Agent][0m       "service_name": "checkout-api",
+[0;32m[Nova-Agent][0m       "namespace": "default",
+[0;32m[Nova-Agent][0m       "target_replicas": 4
+[0;32m[Nova-Agent][0m     }
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "validation_summary": {
+[0;32m[Nova-Agent][0m     "total_nodes": 8,
+[0;32m[Nova-Agent][0m     "valid_nodes": 8,
+[0;32m[Nova-Agent][0m     "invalid_nodes": [],
+[0;32m[Nova-Agent][0m     "schema_score": 1.0,
+[0;32m[Nova-Agent][0m     "nodes": [
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "triage",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 358
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "root_cause_reasoner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 411
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "critic",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 164
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "remediation_planner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 333
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "log_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 49
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "metrics_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 60
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "k8s_inspector",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 39
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "github_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 28
+[0;32m[Nova-Agent][0m       }
+[0;32m[Nova-Agent][0m     ]
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "report_path": "E:\\Nova Hackathon\\NOVA-GOVERNANCE-BRANCH\\NovaOps\\Music\\NovaOps-v2\\plans\\20260311-231907-95cdcf\\report.md",
+[0;32m[Nova-Agent][0m   "severity": "P2",
+[0;32m[Nova-Agent][0m   "governance_decision": "REQUIRE_APPROVAL",
+[0;32m[Nova-Agent][0m   "governance_status": "pending_approval",
+[0;32m[Nova-Agent][0m   "risk_score": 41,
+[0;32m[Nova-Agent][0m   "policy_name": "low_confidence_requires_approval",
+[0;32m[Nova-Agent][0m   "confidence": 0.5800000000000001,
+[0;32m[Nova-Agent][0m   "confidence_source": "convergence_disagreement"
+[0;32m[Nova-Agent][0m }
+
+[0;32m[Nova-Agent][0m --- Test Judgment ---
+[0;32m[Nova-Agent][0m Status:       PASS
+[0;32m[Nova-Agent][0m Tool:         scale_deployment (expected: scale_deployment)
+[0;32m[Nova-Agent][0m Governance:   REQUIRE_APPROVAL
+[0;32m[Nova-Agent][0m Confidence:   0.58
+[0;32m[Nova-Agent][0m Risk Score:   41/100
+[0;32m[Nova-Agent][0m Policy:       low_confidence_requires_approval
+[0;32m[Nova-Agent][0m Reason:       Tool matched (scale_deployment), governance approved
+
+[0;32m[Nova-Agent][0m ✅ PASS: Agent correctly chose 'scale_deployment' for Checkout API — Black Friday Traffic Surge.
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m SCENARIO: Auth Service — OAuth Thread Deadlock
+[0;32m[Nova-Agent][0m SERVICE:  auth-service
+[0;32m[Nova-Agent][0m EXPECTED: restart_pods
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   NovaOps v2 — Autonomous SRE War Room
+[0;32m[Nova-Agent][0m   Alert: Auth Service — OAuth Thread Deadlock on auth-service
+[0;32m[Nova-Agent][0m   Time: 2026-03-11T23:19:09.969101
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m [*] Investigation ID: 20260311-231909-a50063
+[0;32m[Nova-Agent][0m [*] Building war room graph...
+[0;32m[Nova-Agent][0m [*] Domain: deadlock
+[0;32m[Nova-Agent][0m [*] Starting investigation...
+
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   Investigation Complete
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m {"action_taken": "restart_pods", "parameters": {"service_name": "auth-service", "namespace": "default"}, "justification": "Thread deadlock requires pod restart to recover execution flow.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}
+[0;32m[Nova-Agent][0m {"verdict": "PASS", "confidence": 0.82, "feedback": "Deadlock detected; restarting pods will clear the deadlock state.", "missing_evidence": [], "action_approved": true}
+[0;32m[Nova-Agent][0m {"hypotheses": [{"rank": 1, "description": "Thread deadlock requires pod restart to recover execution flow.", "confidence": 0.82, "evidence_for": ["Thread deadlock requires pod restart to recover execution flow."], "evidence_against": [], "recommended_action": "restart_pods"}], "reasoning_chain": "Thread deadlock requires pod restart to recover execution flow.", "gaps": [], "confidence_overall": 0.82}
+
+[0;32m[Nova-Agent][0m [*] Report saved: E:\Nova Hackathon\NOVA-GOVERNANCE-BRANCH\NovaOps\Music\NovaOps-v2\plans\20260311-231909-a50063\report.md
+[0;32m[Nova-Agent][0m [*] Convening jury for independent blind validation...
+[0;32m[Nova-Agent][0m [*] Jury: action=scale_deployment conf=0.91 escalate=True
+[0;32m[Nova-Agent][0m [*] Convergence: DISAGREE — adjusted_confidence=0.52
+[0;32m[Nova-Agent][0m [*] Governance: decision=REQUIRE_APPROVAL risk=49/100 policy=low_confidence_requires_approval
+
+[0;32m[Nova-Agent][0m --- Full Result ---
+[0;32m[Nova-Agent][0m {
+[0;32m[Nova-Agent][0m   "incident_id": "20260311-231909-a50063",
+[0;32m[Nova-Agent][0m   "domain": "deadlock",
+[0;32m[Nova-Agent][0m   "result": "{\"action_taken\": \"restart_pods\", \"parameters\": {\"service_name\": \"auth-service\", \"namespace\": \"default\"}, \"justification\": \"Thread deadlock requires pod restart to recover execution flow.\", \"verification_needed\": \"Verify latency, error rate, and pod health after remediation.\", \"escalation_required\": false}\n{\"verdict\": \"PASS\", \"confidence\": 0.82, \"feedback\": \"Deadlock detected; restarting pods will clear the deadlock state.\", \"missing_evidence\": [], \"action_approved\": true}\n{\"hypotheses\": [{\"rank\": 1, \"description\": \"Thread deadlock requires pod restart to recover execution flow.\", \"confidence\": 0.82, \"evidence_for\": [\"Thread deadlock requires pod restart to recover execution flow.\"], \"evidence_against\": [], \"recommended_action\": \"restart_pods\"}], \"reasoning_chain\": \"Thread deadlock requires pod restart to recover execution flow.\", \"gaps\": [], \"confidence_overall\": 0.82}",
+[0;32m[Nova-Agent][0m   "proposed_action": {
+[0;32m[Nova-Agent][0m     "tool": "restart_pods",
+[0;32m[Nova-Agent][0m     "parameters": {
+[0;32m[Nova-Agent][0m       "service_name": "auth-service",
+[0;32m[Nova-Agent][0m       "namespace": "default"
+[0;32m[Nova-Agent][0m     }
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "validation_summary": {
+[0;32m[Nova-Agent][0m     "total_nodes": 8,
+[0;32m[Nova-Agent][0m     "valid_nodes": 8,
+[0;32m[Nova-Agent][0m     "invalid_nodes": [],
+[0;32m[Nova-Agent][0m     "schema_score": 1.0,
+[0;32m[Nova-Agent][0m     "nodes": [
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "triage",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 350
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "root_cause_reasoner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 404
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "critic",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 169
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "remediation_planner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 306
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "log_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 45
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "metrics_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 38
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "k8s_inspector",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 49
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "github_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 28
+[0;32m[Nova-Agent][0m       }
+[0;32m[Nova-Agent][0m     ]
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "report_path": "E:\\Nova Hackathon\\NOVA-GOVERNANCE-BRANCH\\NovaOps\\Music\\NovaOps-v2\\plans\\20260311-231909-a50063\\report.md",
+[0;32m[Nova-Agent][0m   "severity": "P2",
+[0;32m[Nova-Agent][0m   "governance_decision": "REQUIRE_APPROVAL",
+[0;32m[Nova-Agent][0m   "governance_status": "pending_approval",
+[0;32m[Nova-Agent][0m   "risk_score": 49,
+[0;32m[Nova-Agent][0m   "policy_name": "low_confidence_requires_approval",
+[0;32m[Nova-Agent][0m   "confidence": 0.52,
+[0;32m[Nova-Agent][0m   "confidence_source": "convergence_disagreement"
+[0;32m[Nova-Agent][0m }
+
+[0;32m[Nova-Agent][0m --- Test Judgment ---
+[0;32m[Nova-Agent][0m Status:       PASS
+[0;32m[Nova-Agent][0m Tool:         restart_pods (expected: restart_pods)
+[0;32m[Nova-Agent][0m Governance:   REQUIRE_APPROVAL
+[0;32m[Nova-Agent][0m Confidence:   0.52
+[0;32m[Nova-Agent][0m Risk Score:   49/100
+[0;32m[Nova-Agent][0m Policy:       low_confidence_requires_approval
+[0;32m[Nova-Agent][0m Reason:       Tool matched (restart_pods), governance approved
+
+[0;32m[Nova-Agent][0m ✅ PASS: Agent correctly chose 'restart_pods' for Auth Service — OAuth Thread Deadlock.
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m SCENARIO: Inventory DB — Bad Credential Rotation
+[0;32m[Nova-Agent][0m SERVICE:  inventory-db
+[0;32m[Nova-Agent][0m EXPECTED: rollback_deployment
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   NovaOps v2 — Autonomous SRE War Room
+[0;32m[Nova-Agent][0m   Alert: Inventory DB — Bad Credential Rotation on inventory-db
+[0;32m[Nova-Agent][0m   Time: 2026-03-11T23:19:12.088758
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m [*] Investigation ID: 20260311-231912-812ab8
+[0;32m[Nova-Agent][0m [*] Building war room graph...
+[0;32m[Nova-Agent][0m [*] Domain: config_drift
+[0;32m[Nova-Agent][0m [*] Starting investigation...
+
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   Investigation Complete
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m {"action_taken": "rollback_deployment", "parameters": {"service_name": "inventory-db", "namespace": "default"}, "justification": "Configuration error requires deployment rollback to restore service stability.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}
+[0;32m[Nova-Agent][0m {"verdict": "PASS", "confidence": 0.85, "feedback": "Configuration drift is best resolved by rolling back to last known-good version.", "missing_evidence": [], "action_approved": true}
+[0;32m[Nova-Agent][0m {"hypotheses": [{"rank": 1, "description": "Configuration error requires deployment rollback to restore service stability.", "confidence": 0.85, "evidence_for": ["Configuration error requires deployment rollback to restore service stability."], "evidence_against": [], "recommended_action": "rollback_deployment"}], "reasoning_chain": "Configuration error requires deployment rollback to restore service stability.", "gaps": [], "confidence_overall": 0.85}
+
+[0;32m[Nova-Agent][0m [*] Report saved: E:\Nova Hackathon\NOVA-GOVERNANCE-BRANCH\NovaOps\Music\NovaOps-v2\plans\20260311-231912-812ab8\report.md
+[0;32m[Nova-Agent][0m [*] Convening jury for independent blind validation...
+[0;32m[Nova-Agent][0m [*] Jury: action=scale_deployment conf=0.91 escalate=True
+[0;32m[Nova-Agent][0m [*] Convergence: DISAGREE — adjusted_confidence=0.55
+[0;32m[Nova-Agent][0m [*] Governance: decision=REQUIRE_APPROVAL risk=67/100 policy=rollback_always_requires_approval
+
+[0;32m[Nova-Agent][0m --- Full Result ---
+[0;32m[Nova-Agent][0m {
+[0;32m[Nova-Agent][0m   "incident_id": "20260311-231912-812ab8",
+[0;32m[Nova-Agent][0m   "domain": "config_drift",
+[0;32m[Nova-Agent][0m   "result": "{\"action_taken\": \"rollback_deployment\", \"parameters\": {\"service_name\": \"inventory-db\", \"namespace\": \"default\"}, \"justification\": \"Configuration error requires deployment rollback to restore service stability.\", \"verification_needed\": \"Verify latency, error rate, and pod health after remediation.\", \"escalation_required\": false}\n{\"verdict\": \"PASS\", \"confidence\": 0.85, \"feedback\": \"Configuration drift is best resolved by rolling back to last known-good version.\", \"missing_evidence\": [], \"action_approved\": true}\n{\"hypotheses\": [{\"rank\": 1, \"description\": \"Configuration error requires deployment rollback to restore service stability.\", \"confidence\": 0.85, \"evidence_for\": [\"Configuration error requires deployment rollback to restore service stability.\"], \"evidence_against\": [], \"recommended_action\": \"rollback_deployment\"}], \"reasoning_chain\": \"Configuration error requires deployment rollback to restore service stability.\", \"gaps\": [], \"confidence_overall\": 0.85}",
+[0;32m[Nova-Agent][0m   "proposed_action": {
+[0;32m[Nova-Agent][0m     "tool": "rollback_deployment",
+[0;32m[Nova-Agent][0m     "parameters": {
+[0;32m[Nova-Agent][0m       "service_name": "inventory-db",
+[0;32m[Nova-Agent][0m       "namespace": "default"
+[0;32m[Nova-Agent][0m     }
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "validation_summary": {
+[0;32m[Nova-Agent][0m     "total_nodes": 8,
+[0;32m[Nova-Agent][0m     "valid_nodes": 8,
+[0;32m[Nova-Agent][0m     "invalid_nodes": [],
+[0;32m[Nova-Agent][0m     "schema_score": 1.0,
+[0;32m[Nova-Agent][0m     "nodes": [
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "triage",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 399
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "root_cause_reasoner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 456
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "critic",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 184
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "remediation_planner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 328
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "log_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 60
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "metrics_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 44
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "k8s_inspector",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 63
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "github_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 27
+[0;32m[Nova-Agent][0m       }
+[0;32m[Nova-Agent][0m     ]
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "report_path": "E:\\Nova Hackathon\\NOVA-GOVERNANCE-BRANCH\\NovaOps\\Music\\NovaOps-v2\\plans\\20260311-231912-812ab8\\report.md",
+[0;32m[Nova-Agent][0m   "severity": "P2",
+[0;32m[Nova-Agent][0m   "governance_decision": "REQUIRE_APPROVAL",
+[0;32m[Nova-Agent][0m   "governance_status": "pending_approval",
+[0;32m[Nova-Agent][0m   "risk_score": 67,
+[0;32m[Nova-Agent][0m   "policy_name": "rollback_always_requires_approval",
+[0;32m[Nova-Agent][0m   "confidence": 0.55,
+[0;32m[Nova-Agent][0m   "confidence_source": "convergence_disagreement"
+[0;32m[Nova-Agent][0m }
+
+[0;32m[Nova-Agent][0m --- Test Judgment ---
+[0;32m[Nova-Agent][0m Status:       PASS
+[0;32m[Nova-Agent][0m Tool:         rollback_deployment (expected: rollback_deployment)
+[0;32m[Nova-Agent][0m Governance:   REQUIRE_APPROVAL
+[0;32m[Nova-Agent][0m Confidence:   0.55
+[0;32m[Nova-Agent][0m Risk Score:   67/100
+[0;32m[Nova-Agent][0m Policy:       rollback_always_requires_approval
+[0;32m[Nova-Agent][0m Reason:       Tool matched (rollback_deployment), governance approved
+
+[0;32m[Nova-Agent][0m ✅ PASS: Agent correctly chose 'rollback_deployment' for Inventory DB — Bad Credential Rotation.
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m SCENARIO: Order Processor — Organic Cache Bloat
+[0;32m[Nova-Agent][0m SERVICE:  order-processor
+[0;32m[Nova-Agent][0m EXPECTED: restart_pods
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   NovaOps v2 — Autonomous SRE War Room
+[0;32m[Nova-Agent][0m   Alert: Order Processor — Organic Cache Bloat on order-processor
+[0;32m[Nova-Agent][0m   Time: 2026-03-11T23:19:14.213571
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m [*] Investigation ID: 20260311-231914-5ca6d7
+[0;32m[Nova-Agent][0m [*] Building war room graph...
+[0;32m[Nova-Agent][0m [*] Domain: oom
+[0;32m[Nova-Agent][0m [*] Starting investigation...
+
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   Investigation Complete
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m {"action_taken": "restart_pods", "parameters": {"service_name": "order-processor", "namespace": "default"}, "justification": "Memory pressure indicates unstable workers that should be recycled.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}
+[0;32m[Nova-Agent][0m {"verdict": "PASS", "confidence": 0.83, "feedback": "OOM evidence is clear and restarting pods is a safe first action.", "missing_evidence": [], "action_approved": true}
+[0;32m[Nova-Agent][0m {"hypotheses": [{"rank": 1, "description": "Memory pressure indicates unstable workers that should be recycled.", "confidence": 0.83, "evidence_for": ["Memory pressure indicates unstable workers that should be recycled."], "evidence_against": [], "recommended_action": "restart_pods"}], "reasoning_chain": "Memory pressure indicates unstable workers that should be recycled.", "gaps": [], "confidence_overall": 0.83}
+
+[0;32m[Nova-Agent][0m [*] Report saved: E:\Nova Hackathon\NOVA-GOVERNANCE-BRANCH\NovaOps\Music\NovaOps-v2\plans\20260311-231914-5ca6d7\report.md
+[0;32m[Nova-Agent][0m [*] Convening jury for independent blind validation...
+[0;32m[Nova-Agent][0m [*] Jury: action=scale_deployment conf=0.91 escalate=True
+[0;32m[Nova-Agent][0m [*] Convergence: DISAGREE — adjusted_confidence=0.53
+[0;32m[Nova-Agent][0m [*] Governance: decision=REQUIRE_APPROVAL risk=48/100 policy=low_confidence_requires_approval
+
+[0;32m[Nova-Agent][0m --- Full Result ---
+[0;32m[Nova-Agent][0m {
+[0;32m[Nova-Agent][0m   "incident_id": "20260311-231914-5ca6d7",
+[0;32m[Nova-Agent][0m   "domain": "oom",
+[0;32m[Nova-Agent][0m   "result": "{\"action_taken\": \"restart_pods\", \"parameters\": {\"service_name\": \"order-processor\", \"namespace\": \"default\"}, \"justification\": \"Memory pressure indicates unstable workers that should be recycled.\", \"verification_needed\": \"Verify latency, error rate, and pod health after remediation.\", \"escalation_required\": false}\n{\"verdict\": \"PASS\", \"confidence\": 0.83, \"feedback\": \"OOM evidence is clear and restarting pods is a safe first action.\", \"missing_evidence\": [], \"action_approved\": true}\n{\"hypotheses\": [{\"rank\": 1, \"description\": \"Memory pressure indicates unstable workers that should be recycled.\", \"confidence\": 0.83, \"evidence_for\": [\"Memory pressure indicates unstable workers that should be recycled.\"], \"evidence_against\": [], \"recommended_action\": \"restart_pods\"}], \"reasoning_chain\": \"Memory pressure indicates unstable workers that should be recycled.\", \"gaps\": [], \"confidence_overall\": 0.83}",
+[0;32m[Nova-Agent][0m   "proposed_action": {
+[0;32m[Nova-Agent][0m     "tool": "restart_pods",
+[0;32m[Nova-Agent][0m     "parameters": {
+[0;32m[Nova-Agent][0m       "service_name": "order-processor",
+[0;32m[Nova-Agent][0m       "namespace": "default"
+[0;32m[Nova-Agent][0m     }
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "validation_summary": {
+[0;32m[Nova-Agent][0m     "total_nodes": 8,
+[0;32m[Nova-Agent][0m     "valid_nodes": 8,
+[0;32m[Nova-Agent][0m     "invalid_nodes": [],
+[0;32m[Nova-Agent][0m     "schema_score": 1.0,
+[0;32m[Nova-Agent][0m     "nodes": [
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "triage",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 360
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "root_cause_reasoner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 416
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "critic",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 169
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "remediation_planner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 313
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "log_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 41
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "metrics_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 39
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "k8s_inspector",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 61
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "github_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 27
+[0;32m[Nova-Agent][0m       }
+[0;32m[Nova-Agent][0m     ]
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "report_path": "E:\\Nova Hackathon\\NOVA-GOVERNANCE-BRANCH\\NovaOps\\Music\\NovaOps-v2\\plans\\20260311-231914-5ca6d7\\report.md",
+[0;32m[Nova-Agent][0m   "severity": "P2",
+[0;32m[Nova-Agent][0m   "governance_decision": "REQUIRE_APPROVAL",
+[0;32m[Nova-Agent][0m   "governance_status": "pending_approval",
+[0;32m[Nova-Agent][0m   "risk_score": 48,
+[0;32m[Nova-Agent][0m   "policy_name": "low_confidence_requires_approval",
+[0;32m[Nova-Agent][0m   "confidence": 0.53,
+[0;32m[Nova-Agent][0m   "confidence_source": "convergence_disagreement"
+[0;32m[Nova-Agent][0m }
+
+[0;32m[Nova-Agent][0m --- Test Judgment ---
+[0;32m[Nova-Agent][0m Status:       PASS
+[0;32m[Nova-Agent][0m Tool:         restart_pods (expected: restart_pods)
+[0;32m[Nova-Agent][0m Governance:   REQUIRE_APPROVAL
+[0;32m[Nova-Agent][0m Confidence:   0.53
+[0;32m[Nova-Agent][0m Risk Score:   48/100
+[0;32m[Nova-Agent][0m Policy:       low_confidence_requires_approval
+[0;32m[Nova-Agent][0m Reason:       Tool matched (restart_pods), governance approved
+
+[0;32m[Nova-Agent][0m ✅ PASS: Agent correctly chose 'restart_pods' for Order Processor — Organic Cache Bloat.
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m SCENARIO: Notification Service — Twilio SMS Outage
+[0;32m[Nova-Agent][0m SERVICE:  notification-service
+[0;32m[Nova-Agent][0m EXPECTED: noop_require_human
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   NovaOps v2 — Autonomous SRE War Room
+[0;32m[Nova-Agent][0m   Alert: Notification Service — Twilio SMS Outage on notification-service
+[0;32m[Nova-Agent][0m   Time: 2026-03-11T23:19:16.334995
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m [*] Investigation ID: 20260311-231916-cb01c8
+[0;32m[Nova-Agent][0m [*] Building war room graph...
+[0;32m[Nova-Agent][0m [*] Domain: unknown
+[0;32m[Nova-Agent][0m [*] Starting investigation...
+
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   Investigation Complete
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m {"action_taken": "noop_require_human", "parameters": {"service_name": "notification-service", "namespace": "default"}, "justification": "Signal does not match a known domain with enough confidence.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": true}
+[0;32m[Nova-Agent][0m {"verdict": "FAIL", "confidence": 0.45, "feedback": "Evidence is incomplete. Escalate to a human operator.", "missing_evidence": ["Run live investigation"], "action_approved": false}
+[0;32m[Nova-Agent][0m {"hypotheses": [{"rank": 1, "description": "Signal does not match a known domain with enough confidence.", "confidence": 0.45, "evidence_for": ["Signal does not match a known domain with enough confidence."], "evidence_against": [], "recommended_action": "noop_require_human"}], "reasoning_chain": "Signal does not match a known domain with enough confidence.", "gaps": ["Human review recommended"], "confidence_overall": 0.45}
+
+[0;32m[Nova-Agent][0m [*] Report saved: E:\Nova Hackathon\NOVA-GOVERNANCE-BRANCH\NovaOps\Music\NovaOps-v2\plans\20260311-231916-cb01c8\report.md
+[0;32m[Nova-Agent][0m [*] Convening jury for independent blind validation...
+[0;32m[Nova-Agent][0m [*] Jury: action=scale_deployment conf=0.91 escalate=True
+[0;32m[Nova-Agent][0m [*] Convergence: DISAGREE — adjusted_confidence=0.15
+[0;32m[Nova-Agent][0m [*] Governance: decision=REQUIRE_APPROVAL risk=44/100 policy=noop_requires_approval
+
+[0;32m[Nova-Agent][0m --- Full Result ---
+[0;32m[Nova-Agent][0m {
+[0;32m[Nova-Agent][0m   "incident_id": "20260311-231916-cb01c8",
+[0;32m[Nova-Agent][0m   "domain": "unknown",
+[0;32m[Nova-Agent][0m   "result": "{\"action_taken\": \"noop_require_human\", \"parameters\": {\"service_name\": \"notification-service\", \"namespace\": \"default\"}, \"justification\": \"Signal does not match a known domain with enough confidence.\", \"verification_needed\": \"Verify latency, error rate, and pod health after remediation.\", \"escalation_required\": true}\n{\"verdict\": \"FAIL\", \"confidence\": 0.45, \"feedback\": \"Evidence is incomplete. Escalate to a human operator.\", \"missing_evidence\": [\"Run live investigation\"], \"action_approved\": false}\n{\"hypotheses\": [{\"rank\": 1, \"description\": \"Signal does not match a known domain with enough confidence.\", \"confidence\": 0.45, \"evidence_for\": [\"Signal does not match a known domain with enough confidence.\"], \"evidence_against\": [], \"recommended_action\": \"noop_require_human\"}], \"reasoning_chain\": \"Signal does not match a known domain with enough confidence.\", \"gaps\": [\"Human review recommended\"], \"confidence_overall\": 0.45}",
+[0;32m[Nova-Agent][0m   "proposed_action": {
+[0;32m[Nova-Agent][0m     "tool": "noop_require_human",
+[0;32m[Nova-Agent][0m     "parameters": {
+[0;32m[Nova-Agent][0m       "service_name": "notification-service",
+[0;32m[Nova-Agent][0m       "namespace": "default"
+[0;32m[Nova-Agent][0m     }
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "validation_summary": {
+[0;32m[Nova-Agent][0m     "total_nodes": 8,
+[0;32m[Nova-Agent][0m     "valid_nodes": 8,
+[0;32m[Nova-Agent][0m     "invalid_nodes": [],
+[0;32m[Nova-Agent][0m     "schema_score": 1.0,
+[0;32m[Nova-Agent][0m     "nodes": [
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "triage",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 348
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "root_cause_reasoner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 427
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "critic",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 182
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "remediation_planner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 316
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "log_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 63
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "metrics_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 61
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "k8s_inspector",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 60
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "github_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 70
+[0;32m[Nova-Agent][0m       }
+[0;32m[Nova-Agent][0m     ]
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "report_path": "E:\\Nova Hackathon\\NOVA-GOVERNANCE-BRANCH\\NovaOps\\Music\\NovaOps-v2\\plans\\20260311-231916-cb01c8\\report.md",
+[0;32m[Nova-Agent][0m   "severity": "P2",
+[0;32m[Nova-Agent][0m   "governance_decision": "REQUIRE_APPROVAL",
+[0;32m[Nova-Agent][0m   "governance_status": "pending_approval",
+[0;32m[Nova-Agent][0m   "risk_score": 44,
+[0;32m[Nova-Agent][0m   "policy_name": "noop_requires_approval",
+[0;32m[Nova-Agent][0m   "confidence": 0.15000000000000002,
+[0;32m[Nova-Agent][0m   "confidence_source": "convergence_disagreement"
+[0;32m[Nova-Agent][0m }
+
+[0;32m[Nova-Agent][0m --- Test Judgment ---
+[0;32m[Nova-Agent][0m Status:       PASS
+[0;32m[Nova-Agent][0m Tool:         noop_require_human (expected: noop_require_human)
+[0;32m[Nova-Agent][0m Governance:   REQUIRE_APPROVAL
+[0;32m[Nova-Agent][0m Confidence:   0.15
+[0;32m[Nova-Agent][0m Risk Score:   44/100
+[0;32m[Nova-Agent][0m Policy:       noop_requires_approval
+[0;32m[Nova-Agent][0m Reason:       Tool matched (noop_require_human), governance approved
+
+[0;32m[Nova-Agent][0m ✅ PASS: Agent correctly chose 'noop_require_human' for Notification Service — Twilio SMS Outage.
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m SCENARIO: Search Indexer — Zero-Shot CPU Spike
+[0;32m[Nova-Agent][0m SERVICE:  search-indexer
+[0;32m[Nova-Agent][0m EXPECTED: scale_deployment
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   NovaOps v2 — Autonomous SRE War Room
+[0;32m[Nova-Agent][0m   Alert: Search Indexer — Zero-Shot CPU Spike on search-indexer
+[0;32m[Nova-Agent][0m   Time: 2026-03-11T23:19:18.460258
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m [*] Investigation ID: 20260311-231918-0f9868
+[0;32m[Nova-Agent][0m [*] Building war room graph...
+[0;32m[Nova-Agent][0m [*] Domain: traffic_surge
+[0;32m[Nova-Agent][0m [*] Starting investigation...
+
+
+[0;32m[Nova-Agent][0m ============================================================
+[0;32m[Nova-Agent][0m   Investigation Complete
+[0;32m[Nova-Agent][0m ============================================================
+
+[0;32m[Nova-Agent][0m {"action_taken": "scale_deployment", "parameters": {"service_name": "search-indexer", "namespace": "default", "target_replicas": 4}, "justification": "Checkout is under elevated demand and should scale horizontally.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}
+[0;32m[Nova-Agent][0m {"verdict": "PASS", "confidence": 0.88, "feedback": "Traffic surge pattern is consistent across logs and metrics.", "missing_evidence": [], "action_approved": true}
+[0;32m[Nova-Agent][0m {"hypotheses": [{"rank": 1, "description": "Checkout is under elevated demand and should scale horizontally.", "confidence": 0.88, "evidence_for": ["Checkout is under elevated demand and should scale horizontally."], "evidence_against": [], "recommended_action": "scale_deployment"}], "reasoning_chain": "Checkout is under elevated demand and should scale horizontally.", "gaps": [], "confidence_overall": 0.88}
+
+[0;32m[Nova-Agent][0m [*] Report saved: E:\Nova Hackathon\NOVA-GOVERNANCE-BRANCH\NovaOps\Music\NovaOps-v2\plans\20260311-231918-0f9868\report.md
+[0;32m[Nova-Agent][0m [*] Convening jury for independent blind validation...
+[0;32m[Nova-Agent][0m [*] Jury: action=scale_deployment conf=0.91 escalate=True
+[0;32m[Nova-Agent][0m [*] Convergence: DISAGREE — adjusted_confidence=0.58
+[0;32m[Nova-Agent][0m [*] Governance: decision=REQUIRE_APPROVAL risk=41/100 policy=low_confidence_requires_approval
+
+[0;32m[Nova-Agent][0m --- Full Result ---
+[0;32m[Nova-Agent][0m {
+[0;32m[Nova-Agent][0m   "incident_id": "20260311-231918-0f9868",
+[0;32m[Nova-Agent][0m   "domain": "traffic_surge",
+[0;32m[Nova-Agent][0m   "result": "{\"action_taken\": \"scale_deployment\", \"parameters\": {\"service_name\": \"search-indexer\", \"namespace\": \"default\", \"target_replicas\": 4}, \"justification\": \"Checkout is under elevated demand and should scale horizontally.\", \"verification_needed\": \"Verify latency, error rate, and pod health after remediation.\", \"escalation_required\": false}\n{\"verdict\": \"PASS\", \"confidence\": 0.88, \"feedback\": \"Traffic surge pattern is consistent across logs and metrics.\", \"missing_evidence\": [], \"action_approved\": true}\n{\"hypotheses\": [{\"rank\": 1, \"description\": \"Checkout is under elevated demand and should scale horizontally.\", \"confidence\": 0.88, \"evidence_for\": [\"Checkout is under elevated demand and should scale horizontally.\"], \"evidence_against\": [], \"recommended_action\": \"scale_deployment\"}], \"reasoning_chain\": \"Checkout is under elevated demand and should scale horizontally.\", \"gaps\": [], \"confidence_overall\": 0.88}",
+[0;32m[Nova-Agent][0m   "proposed_action": {
+[0;32m[Nova-Agent][0m     "tool": "scale_deployment",
+[0;32m[Nova-Agent][0m     "parameters": {
+[0;32m[Nova-Agent][0m       "service_name": "search-indexer",
+[0;32m[Nova-Agent][0m       "namespace": "default",
+[0;32m[Nova-Agent][0m       "target_replicas": 4
+[0;32m[Nova-Agent][0m     }
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "validation_summary": {
+[0;32m[Nova-Agent][0m     "total_nodes": 8,
+[0;32m[Nova-Agent][0m     "valid_nodes": 8,
+[0;32m[Nova-Agent][0m     "invalid_nodes": [],
+[0;32m[Nova-Agent][0m     "schema_score": 1.0,
+[0;32m[Nova-Agent][0m     "nodes": [
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "triage",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 360
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "root_cause_reasoner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 411
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "critic",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 164
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "remediation_planner",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 335
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "log_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 49
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "metrics_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 60
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "k8s_inspector",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 39
+[0;32m[Nova-Agent][0m       },
+[0;32m[Nova-Agent][0m       {
+[0;32m[Nova-Agent][0m         "name": "github_analyst",
+[0;32m[Nova-Agent][0m         "schema_valid": true,
+[0;32m[Nova-Agent][0m         "text_length": 28
+[0;32m[Nova-Agent][0m       }
+[0;32m[Nova-Agent][0m     ]
+[0;32m[Nova-Agent][0m   },
+[0;32m[Nova-Agent][0m   "report_path": "E:\\Nova Hackathon\\NOVA-GOVERNANCE-BRANCH\\NovaOps\\Music\\NovaOps-v2\\plans\\20260311-231918-0f9868\\report.md",
+[0;32m[Nova-Agent][0m   "severity": "P2",
+[0;32m[Nova-Agent][0m   "governance_decision": "REQUIRE_APPROVAL",
+[0;32m[Nova-Agent][0m   "governance_status": "pending_approval",
+[0;32m[Nova-Agent][0m   "risk_score": 41,
+[0;32m[Nova-Agent][0m   "policy_name": "low_confidence_requires_approval",
+[0;32m[Nova-Agent][0m   "confidence": 0.5800000000000001,
+[0;32m[Nova-Agent][0m   "confidence_source": "convergence_disagreement"
+[0;32m[Nova-Agent][0m }
+
+[0;32m[Nova-Agent][0m --- Test Judgment ---
+[0;32m[Nova-Agent][0m Status:       PASS
+[0;32m[Nova-Agent][0m Tool:         scale_deployment (expected: scale_deployment)
+[0;32m[Nova-Agent][0m Governance:   REQUIRE_APPROVAL
+[0;32m[Nova-Agent][0m Confidence:   0.58
+[0;32m[Nova-Agent][0m Risk Score:   41/100
+[0;32m[Nova-Agent][0m Policy:       low_confidence_requires_approval
+[0;32m[Nova-Agent][0m Reason:       Tool matched (scale_deployment), governance approved
+
+[0;32m[Nova-Agent][0m ✅ PASS: Agent correctly chose 'scale_deployment' for Search Indexer — Zero-Shot CPU Spike.
+
+[0;32m[Nova-Agent][0m ======================================================================
+[0;32m[Nova-Agent][0m TEST SUMMARY
+[0;32m[Nova-Agent][0m ======================================================================
+
+[0;32m[Nova-Agent][0m Results: 7/7 scenarios PASSED
+
+[0;32m[Nova-Agent][0m ✅ Redis Cache OOM — Bad Deployment: PASS (rollback_deployment)
+[0;32m[Nova-Agent][0m ✅ Checkout API — Black Friday Traffic Surge: PASS (scale_deployment)
+[0;32m[Nova-Agent][0m ✅ Auth Service — OAuth Thread Deadlock: PASS (restart_pods)
+[0;32m[Nova-Agent][0m ✅ Inventory DB — Bad Credential Rotation: PASS (rollback_deployment)
+[0;32m[Nova-Agent][0m ✅ Order Processor — Organic Cache Bloat: PASS (restart_pods)
+[0;32m[Nova-Agent][0m ✅ Notification Service — Twilio SMS Outage: PASS (noop_require_human)
+[0;32m[Nova-Agent][0m ✅ Search Indexer — Zero-Shot CPU Spike: PASS (scale_deployment)
+
+[0;32m[Nova-Agent][0m Success rate: 100.0%

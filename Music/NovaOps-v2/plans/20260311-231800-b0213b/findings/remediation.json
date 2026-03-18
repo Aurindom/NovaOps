@@ -1,0 +1,1 @@
+{"action_taken": "rollback_deployment", "parameters": {"service_name": "redis-cache", "namespace": "default"}, "justification": "Memory pressure indicates unstable workers that should be recycled.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}

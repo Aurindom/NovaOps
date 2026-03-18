@@ -1,0 +1,1 @@
+{"action_taken": "restart_pods", "parameters": {"service_name": "order-processor", "namespace": "default"}, "justification": "Memory pressure indicates unstable workers that should be recycled.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}

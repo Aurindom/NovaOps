@@ -1,0 +1,15 @@
+{
+  "incident_id": "20260311-225332-6e8d69",
+  "decision": "REQUIRE_APPROVAL",
+  "policy_name": "low_confidence_requires_approval",
+  "reason": "Confidence below 65% \u2014 insufficient certainty for autonomous action",
+  "risk_score": 48,
+  "severity": "P2",
+  "confidence": 0.53,
+  "confidence_source": "convergence_disagreement",
+  "action": "restart_pods",
+  "auto_executed": false,
+  "execution_result": {},
+  "status": "pending_approval",
+  "evaluated_at": "2026-03-12T02:53:32.610415+00:00"
+}

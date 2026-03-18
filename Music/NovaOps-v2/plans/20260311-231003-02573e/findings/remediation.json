@@ -1,0 +1,1 @@
+{"action_taken": "restart_pods", "parameters": {"service_name": "auth-service", "namespace": "default"}, "justification": "Thread deadlock requires pod restart to recover execution flow.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}

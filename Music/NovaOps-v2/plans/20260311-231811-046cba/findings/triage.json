@@ -1,0 +1,1 @@
+{"domain": "unknown", "severity": "P2", "service_name": "notification-service", "namespace": "default", "initial_hypotheses": ["Signal does not match a known domain with enough confidence."], "key_evidence": ["Signal does not match a known domain with enough confidence."], "summary": "Signal does not match a known domain with enough confidence."}

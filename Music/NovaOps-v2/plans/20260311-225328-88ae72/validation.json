@@ -1,0 +1,48 @@
+{
+  "total_nodes": 8,
+  "valid_nodes": 8,
+  "invalid_nodes": [],
+  "schema_score": 1.0,
+  "nodes": [
+    {
+      "name": "triage",
+      "schema_valid": true,
+      "text_length": 350
+    },
+    {
+      "name": "root_cause_reasoner",
+      "schema_valid": true,
+      "text_length": 404
+    },
+    {
+      "name": "critic",
+      "schema_valid": true,
+      "text_length": 169
+    },
+    {
+      "name": "remediation_planner",
+      "schema_valid": true,
+      "text_length": 306
+    },
+    {
+      "name": "log_analyst",
+      "schema_valid": true,
+      "text_length": 45
+    },
+    {
+      "name": "metrics_analyst",
+      "schema_valid": true,
+      "text_length": 38
+    },
+    {
+      "name": "k8s_inspector",
+      "schema_valid": true,
+      "text_length": 49
+    },
+    {
+      "name": "github_analyst",
+      "schema_valid": true,
+      "text_length": 28
+    }
+  ]
+}

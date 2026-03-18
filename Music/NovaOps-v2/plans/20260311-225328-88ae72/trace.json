@@ -1,0 +1,48 @@
+{
+  "incident_id": "20260311-225328-88ae72",
+  "saved_at": "2026-03-11T22:53:28.394538",
+  "schema_score": 1.0,
+  "invalid_nodes": [],
+  "nodes": [
+    {
+      "name": "triage",
+      "schema_valid": true,
+      "text_length": 350
+    },
+    {
+      "name": "root_cause_reasoner",
+      "schema_valid": true,
+      "text_length": 404
+    },
+    {
+      "name": "critic",
+      "schema_valid": true,
+      "text_length": 169
+    },
+    {
+      "name": "remediation_planner",
+      "schema_valid": true,
+      "text_length": 306
+    },
+    {
+      "name": "log_analyst",
+      "schema_valid": true,
+      "text_length": 45
+    },
+    {
+      "name": "metrics_analyst",
+      "schema_valid": true,
+      "text_length": 38
+    },
+    {
+      "name": "k8s_inspector",
+      "schema_valid": true,
+      "text_length": 49
+    },
+    {
+      "name": "github_analyst",
+      "schema_valid": true,
+      "text_length": 28
+    }
+  ]
+}

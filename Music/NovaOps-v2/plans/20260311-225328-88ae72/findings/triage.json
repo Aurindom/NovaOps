@@ -1,0 +1,1 @@
+{"domain": "deadlock", "severity": "P2", "service_name": "auth-service", "namespace": "default", "initial_hypotheses": ["Thread deadlock requires pod restart to recover execution flow."], "key_evidence": ["Thread deadlock requires pod restart to recover execution flow."], "summary": "Thread deadlock requires pod restart to recover execution flow."}

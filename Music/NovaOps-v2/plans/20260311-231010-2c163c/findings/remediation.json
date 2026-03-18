@@ -1,0 +1,1 @@
+{"action_taken": "noop_require_human", "parameters": {"service_name": "notification-service", "namespace": "default"}, "justification": "Signal does not match a known domain with enough confidence.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": true}

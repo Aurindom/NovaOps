@@ -1,0 +1,15 @@
+{
+  "incident_id": "20260311-231010-2c163c",
+  "decision": "REQUIRE_APPROVAL",
+  "policy_name": "noop_requires_approval",
+  "reason": "No-op actions indicate insufficient confidence and should stay human-gated",
+  "risk_score": 44,
+  "severity": "P2",
+  "confidence": 0.15000000000000002,
+  "confidence_source": "convergence_disagreement",
+  "action": "noop_require_human",
+  "auto_executed": false,
+  "execution_result": {},
+  "status": "pending_approval",
+  "evaluated_at": "2026-03-12T03:10:10.161811+00:00"
+}

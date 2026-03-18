@@ -1,0 +1,80 @@
+{
+  "triage": {
+    "domain": "config_drift",
+    "severity": "P2",
+    "service_name": "inventory-db",
+    "namespace": "default",
+    "initial_hypotheses": [
+      "Configuration error requires deployment rollback to restore service stability."
+    ],
+    "key_evidence": [
+      "Configuration error requires deployment rollback to restore service stability."
+    ],
+    "summary": "Configuration error requires deployment rollback to restore service stability."
+  },
+  "log_analyst": {
+    "agent_name": "log_analyst",
+    "findings": {
+      "config_error": true,
+      "error_type": "InvalidConfiguration"
+    },
+    "hypothesis_support": {}
+  },
+  "metrics_analyst": {
+    "agent_name": "metrics_analyst",
+    "findings": {
+      "throughput": "zero",
+      "errors": "elevated"
+    },
+    "hypothesis_support": {}
+  },
+  "k8s_inspector": {
+    "agent_name": "k8s_inspector",
+    "findings": {
+      "crash_loop_back_off": true,
+      "pod_status": "CrashLoopBackOff"
+    },
+    "hypothesis_support": {}
+  },
+  "github_analyst": {
+    "agent_name": "github_analyst",
+    "findings": {
+      "recent_deployment": true
+    },
+    "hypothesis_support": {}
+  },
+  "root_cause": {
+    "hypotheses": [
+      {
+        "rank": 1,
+        "description": "Configuration error requires deployment rollback to restore service stability.",
+        "confidence": 0.85,
+        "evidence_for": [
+          "Configuration error requires deployment rollback to restore service stability."
+        ],
+        "evidence_against": [],
+        "recommended_action": "rollback_deployment"
+      }
+    ],
+    "reasoning_chain": "Configuration error requires deployment rollback to restore service stability.",
+    "gaps": [],
+    "confidence_overall": 0.85
+  },
+  "critic": {
+    "verdict": "PASS",
+    "confidence": 0.85,
+    "feedback": "Configuration drift is best resolved by rolling back to last known-good version.",
+    "missing_evidence": [],
+    "action_approved": true
+  },
+  "remediation": {
+    "action_taken": "rollback_deployment",
+    "parameters": {
+      "service_name": "inventory-db",
+      "namespace": "default"
+    },
+    "justification": "Configuration error requires deployment rollback to restore service stability.",
+    "verification_needed": "Verify latency, error rate, and pod health after remediation.",
+    "escalation_required": false
+  }
+}

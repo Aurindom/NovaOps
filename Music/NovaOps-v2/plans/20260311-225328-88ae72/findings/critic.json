@@ -1,0 +1,1 @@
+{"verdict": "PASS", "confidence": 0.82, "feedback": "Deadlock detected; restarting pods will clear the deadlock state.", "missing_evidence": [], "action_approved": true}

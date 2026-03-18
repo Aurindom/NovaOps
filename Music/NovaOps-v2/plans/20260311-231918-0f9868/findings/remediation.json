@@ -1,0 +1,1 @@
+{"action_taken": "scale_deployment", "parameters": {"service_name": "search-indexer", "namespace": "default", "target_replicas": 4}, "justification": "Checkout is under elevated demand and should scale horizontally.", "verification_needed": "Verify latency, error rate, and pod health after remediation.", "escalation_required": false}
