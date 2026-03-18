@@ -1,0 +1,71 @@
+# Skills Index — Maps alert signals to domains
+# The Triage Agent reads this to route incidents to the right skill set.
+
+alert_keywords:
+  oom:
+    - OutOfMemoryError
+    - OOMKilling
+    - OOM
+    - oom
+    - "memory cgroup"
+    - "heap space"
+    - "memory limit"
+    - "memory spike"
+    - "cache bloat"
+    - "cache"
+    - "memory leak"
+  traffic_surge:
+    - "CPU exhaustion"
+    - "ThreadPoolExecutor exhausted"
+    - "Rejecting requests"
+    - "Liveness probe failed"
+    - "traffic surge"
+    - "traffic spike"
+    - "latency"
+    - "high latency"
+    - "elevated latency"
+    - "slow responses"
+    - "throughput spike"
+    - "request timeout"
+    - "CPU spike"
+    - "saturated"
+    - "workers"
+    - "indexing"
+  deadlock:
+    - "Deadlock detected"
+    - "Thread waiting"
+    - "lock held by"
+    - "Readiness probe failed"
+    - "0% CPU"
+    - "deadlock"
+    - "thread"
+    - "lock contention"
+  config_drift:
+    - "CrashLoopBackOff"
+    - "ConnectionRefused"
+    - "Access Denied"
+    - "configuration"
+    - "environment variable"
+    - "feature flag"
+    - "credential"
+    - "authentication"
+    - "password"
+    - "secret"
+  dependency_failure:
+    - "UnknownHostException"
+    - "DNS resolution"
+    - "third-party"
+    - "upstream timeout"
+    - "connection refused external"
+  cascading_failure:
+    - "multiple services"
+    - "connection pool exhausted"
+    - "circuit breaker"
+    - "downstream timeout"
+    - "cascade"
+
+tool_to_domain:
+  rollback_deployment: [oom, config_drift]
+  scale_deployment: [traffic_surge]
+  restart_pods: [oom, deadlock]
+  noop_require_human: [dependency_failure, cascading_failure]

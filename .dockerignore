@@ -1,0 +1,14 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+plans/
+history.db
+*.log
+evaluation/results/
+dummy-service/
+dashboard/node_modules/
+.git/
+.claude/
+*.pdf

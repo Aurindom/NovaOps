@@ -1,0 +1,78 @@
+services:
+  k3s:
+    container_name: k3s
+    image: rancher/k3s:latest
+    command: server --tls-san=k3s --disable=traefik
+    environment:
+      - K3S_KUBECONFIG_OUTPUT=/output/config
+      - K3S_KUBECONFIG_MODE=666
+    volumes:
+      - k3s-config:/output
+    ports:
+      - "6443:6443"
+    privileged: true
+    networks:
+      - novaops_net
+
+  localstack:
+    container_name: localstack
+    image: localstack/localstack:latest
+    ports:
+      - "4566:4566"          # LocalStack Gateway
+    environment:
+      - SERVICES=s3,dynamodb # Use LocalStack for both S3 and DynamoDB!
+      - DEBUG=1
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    volumes:
+      - ./init-aws.sh:/etc/localstack/init/ready.d/init-aws.sh
+      - localstack-data:/var/lib/localstack
+    healthcheck:
+      test: ["CMD", "awslocal", "s3", "ls"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - novaops_net
+
+  novaops-api:
+    container_name: novaops-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8000"          # Expose API on host port 8082
+    env_file:
+      - .env
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN:-}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
+      - AWS_EC2_METADATA_DISABLED=true
+      - DYNAMODB_ENDPOINT=http://localstack:4566
+      - S3_ENDPOINT=http://localstack:4566
+      - S3_PUBLIC_ENDPOINT=http://localhost:4566
+      - NOVAOPS_LOG_PATH=/var/log/novaops/novaops.log
+      - NOVAOPS_USE_MOCK=${NOVAOPS_USE_MOCK:-0}
+    volumes:
+      - ./runbooks:/app/runbooks:rw     # Mount runbooks for TF-IDF indexing
+      - ./plans:/app/plans:rw           # Mount plans so host and container share incident state
+      - ./logs:/var/log/novaops:rw      # Persist logs where host has open permissions
+      - k3s-config:/root/.kube          # Mount k3s config for live cluster control
+    command: sh -c "mkdir -p /var/log/novaops && touch /var/log/novaops/novaops.log && uvicorn api.server:app --host 0.0.0.0 --port 8000"
+    depends_on:
+      localstack:
+        condition: service_healthy
+    networks:
+      - novaops_net
+
+volumes:
+  k3s-config:
+  localstack-data:
+  novaops-logs:
+
+networks:
+  novaops_net:
+    driver: bridge

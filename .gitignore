@@ -1,0 +1,33 @@
+# Claude Code
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.venv
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+novaops_system.log
+dashboard.log
+novaops.log
+history.db
+.system_pids
+dashboard/node_modules/
+evaluation/results/
+tests/.tmp/
+bin/
+plans/
+runbooks/
+*.mp4
+*.mp3
+*.mov
+*.avi
+ad/
+.env.example
